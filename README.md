@@ -44,6 +44,13 @@ rather than from Android's spoofed properties:
 - **System fake location.** A persistent system app in `/vendor/app` replaces the `gps`,
   `network` and `fused` providers with a fixed position in Reykjavík. Apps that need a location
   still work, and the chip is never turned on.
+- **Charging feedback.** A persistent system app (`/vendor/app/ChargeAnim`) does two things:
+  - When a charger is plugged in while the phone is locked, it shows a full-screen animation:
+    a big battery that fills green up to the real level, with a bolt and the percentage counting
+    up. It never shows on top of an app in use.
+  - While plugged in, it shows a bolt icon in the status bar, because the battery is shown as
+    plain percentage text only.
+- **Navigation.** Gesture navigation, with the back gesture on the left edge only.
 - **All audio through the earpiece.** This unit's loudspeaker is dead: there is no external
   amplifier on the I²C bus and every speaker path is silent. Every "speaker" path now drives the
   earpiece instead.
@@ -53,7 +60,7 @@ rather than from Android's spoofed properties:
 ```
 tools/      PC-side Python: boot logo, boot animation, log filtering, sparse conversion
 bootanim/   real boot logs of the two boot phases, already filtered
-android/    sources of the rounded-corner overlay and the fake-location app, plus build.ps1
+android/    sources of the rounded-corner overlay, the fake-location app and the charging app, plus build.ps1
 device/     scripts run on the phone as root (phh-su)
 device/vendor/zz_oem_bootanim.rc   final init script installed in /vendor/etc/init
 ```
@@ -87,13 +94,20 @@ device/vendor/zz_oem_bootanim.rc   final init script installed in /vendor/etc/in
      - `media/` holds the pre-PIN animation.
      - `media2/` holds the post-PIN one.
    - At `vold.decrypt=trigger_post_fs_data`, the init script bind-mounts `media2` over `media`.
-6. **Privacy and corners.**
-   - `android/build.ps1` builds both APKs. It needs Build-Tools 30.0.3 and the API 30
-     `android.jar`; the SDK path is set at the top of the script.
-   - Then run `device/privacy_corners.sh`, `device/gps_lock.sh` and
-     `device/fakeloc_system.sh`.
+6. **Privacy, corners and charging.**
+   - `android/build.ps1` builds the overlay and both apps. It needs Build-Tools 30.0.3 and the
+     API 30 `android.jar`; the SDK path is set at the top of the script.
+     - The apps are compiled with `dx`, without desugaring, so the Java sources avoid lambdas.
+   - Then run `device/privacy_corners.sh`, `device/gps_lock.sh`, `device/fakeloc_system.sh`
+     and `device/chargeanim_system.sh`.
    - After the reboot, run `appops set it.breachato.fakeloc android:mock_location allow`.
-7. **Audio.** Run `device/earpiece_all.sh`. To undo it, run `device/spk_revert.sh`.
+7. **Status bar and gestures** (as root):
+   - Battery as percentage text:
+     `content insert --uri content://lineagesettings/system --bind name:s:status_bar_battery_style --bind value:s:2`
+   - Gesture navigation:
+     `cmd overlay enable-exclusive --category com.android.internal.systemui.navbar.gestural`
+   - No back gesture on the right edge: `settings put secure back_gesture_inset_scale_right 0`
+8. **Audio.** Run `device/earpiece_all.sh`. To undo it, run `device/spk_revert.sh`.
 
 **Writing to `/vendor`:**
 - Remount it read-write first: `mount -o remount,rw /vendor`.
