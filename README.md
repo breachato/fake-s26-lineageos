@@ -1,6 +1,7 @@
-# LineageOS on a fake "S26 Ultra" (MediaTek MT6755)
+# LineageOS on a fake "S26"
 
-How a cheap clone sold as an "S26 Ultra" became a privacy-focused LineageOS phone. It has:
+How a cheap clone sold as an "S26" became a privacy-focused phone.
+It has:
 
 - a boot animation built from the phone's **real** boot log;
 - the GPS disabled in hardware;
@@ -12,8 +13,9 @@ How a cheap clone sold as an "S26 Ultra" became a privacy-focused LineageOS phon
 
 ## The real hardware
 
-The phone claims flagship specs. These are the real ones, read from the kernel rather than
-from Android's spoofed properties:
+The phone claims flagship specs.
+These are the real ones, read from the kernel
+rather than from Android's spoofed properties:
 
 | | Claimed | Real |
 |---|---|---|
@@ -28,7 +30,7 @@ from Android's spoofed properties:
 ## Features
 
 - **LineageOS 18.1** (Android 11), phh Treble GSI, rooted (`phh-su`).
-- **Bootloader logo** and **iOS-style charging screens**, redrawn inside the `logo` partition.
+- **Bootloader logo** and **new style charging screens**, redrawn inside the `logo` partition.
 - **Two-part boot animation built from the real log.** The phone uses full-disk encryption (FDE),
   so it boots twice: once before the PIN and once after it. Each half shows a different part of
   the log, and no line is invented or repeated.
@@ -42,8 +44,6 @@ from Android's spoofed properties:
 - **System fake location.** A persistent system app in `/vendor/app` replaces the `gps`,
   `network` and `fused` providers with a fixed position in Reykjavík. Apps that need a location
   still work, and the chip is never turned on.
-- **Real rounded corners.** A `framework-res` overlay rounds the screen corners, including in the
-  launcher's animations.
 - **All audio through the earpiece.** This unit's loudspeaker is dead: there is no external
   amplifier on the I²C bus and every speaker path is silent. Every "speaker" path now drives the
   earpiece instead.
@@ -113,8 +113,6 @@ about 2 GB. Keep your own copy somewhere safe. To go back to stock, run
   the animation show different things.
 - **No finger scrolling in the boot animation.** It runs before touch input exists.
 - **Loudspeaker.** Broken in hardware on this unit.
-- **iPhone hotspot.** It rejects the phone's Wi-Fi with *status 17*: the MAC address is fixed in
-  nvram. This is unsolved.
 - **Mock flag.** The fake location is marked as *mock*, so apps that check for it can tell.
 - **Left as they are:** the bootloader's ORANGE state and the emergency-call button.
 
