@@ -73,8 +73,10 @@ rather than from Android's spoofed properties:
     has *New identity*, *Change server* and *Check public IP*.
 - **App lock.** The apps you choose ask for a code every time they are opened.
   - An accessibility service shows a passcode screen on top of the protected app: frosted
-    wallpaper, round translucent keys with letters, outline dots, the app's icon and name.
-  - Entry completes on the last digit, and the first use asks you to choose a code.
+    wallpaper, the app's icon and name, a row of dashes and bare numerals (no key shapes) that
+    swell and turn lavender when pressed.
+  - The app opens the moment the right code is typed, without OK. A wrong full-length entry turns
+    the dashes red and shakes them. The first use asks you to choose a code.
   - Opening the app lock from the home screen asks for the code, then shows its settings: a master
     switch, a switch per app, the session state and *Change code*.
   - **Trusted session:** after 3 correct codes in one screen-on session, each at least 20 seconds
@@ -84,8 +86,9 @@ rather than from Android's spoofed properties:
 - **Home, lock screen and system UI.**
   - A custom launcher (`/vendor/app/Home`): pages of rounded icons with labels, page dots, a search
     pill and a frosted dock. Pull down to search; long press for dock / app info / uninstall.
-  - A custom lock screen (date, large clock, charging pill, swipe up) raised as the screen turns
-    off, above the keyguard. Swiping up hands over to Android's PIN, which stays the
+  - A custom lock screen raised as the screen turns off, above the keyguard. It shows, centred,
+    a lock glyph, the date and a large clock, plus a charging pill and torch / camera buttons
+    (the camera opens in secure mode). Swiping up hands over to Android's PIN, which stays the
     disk-encryption credential.
   - A SystemUI overlay gives the quick settings rounded-square buttons and a translucent rounded
     sheet, makes notifications dark and translucent, and shortens the drag needed to open and
@@ -99,8 +102,12 @@ rather than from Android's spoofed properties:
   - Animations run at 0.5x.
   - User-installed apps are in the *restricted* standby bucket and may not run in the background.
     WireGuard is the exception. At most 16 cached processes are kept.
-- **Double tap to wake.** The ILITEK touch controller's gesture mode is switched on after every
-  boot.
+- **Wave to wake** (instead of double tap). Two quick passes of a hand over the proximity sensor
+  turn the screen on. Covering the sensor for long, as in a pocket, does nothing.
+  - Double tap cannot work on this unit. The ILITEK controller (chip 79505) is a TDDI chip, shared
+    with the display, and is powered down with it. Its driver does switch to gesture mode, but
+    every I2C command fails, so gesture mode is left off (`device/dt2w_off.sh`).
+  - The proximity sensor is a wake-up sensor and is only listened to while the screen is off.
 - **Tracking off.**
   - Google Play Services, GSF and the other Google background packages are disabled.
   - Airplane mode keeps the cellular modem off while Wi-Fi stays on. Emergency calls still turn

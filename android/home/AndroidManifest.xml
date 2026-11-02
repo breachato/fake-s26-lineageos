@@ -6,6 +6,7 @@
     <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="30" />
 
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <!-- signature permission (platform key): read the wallpaper for the frosted panels -->
     <uses-permission android:name="android.permission.READ_WALLPAPER_INTERNAL" />

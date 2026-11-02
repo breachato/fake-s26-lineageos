@@ -30,6 +30,16 @@ final class PinStore {
                 .putInt("fails", 0).apply();
     }
 
+    /** Silent comparison, no failure counted: used while typing to unlock on the last digit. */
+    boolean matches(String pin) {
+        if (lockedFor() > 0) return false;
+        return MessageDigest.isEqual(hash(p.getString("salt", ""), pin).getBytes(),
+                p.getString("hash", "").getBytes());
+    }
+
+    /** Codes set before the length was stored learn it on their first correct entry. */
+    void rememberLength(int len) { if (length() == 0) p.edit().putInt("len", len).apply(); }
+
     /** True if correct; counts failures and starts the lockout after MAX_TRIES. */
     boolean check(String pin) {
         boolean ok = MessageDigest.isEqual(hash(p.getString("salt", ""), pin).getBytes(),

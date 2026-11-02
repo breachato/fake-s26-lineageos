@@ -40,7 +40,6 @@ public class PinActivity extends Activity {
     static final String EXTRA_MODE = "mode";
     static final String MODE_CHANGE = "change";
     private static final int MIN_LEN = 4, MAX_LEN = 8;
-    private static final String[] LETTERS = {"", "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"};
 
     private PinStore store;
     private String target;          // package to unlock, null when managing the code
@@ -107,8 +106,9 @@ public class PinActivity extends Activity {
 
     private void refresh(String error) {
         long wait = store.lockedFor();
-        title.setText(prompt());
         String name = (String) subtitle.getTag();
+        boolean named = target != null && name != null && store.hasPin();
+        title.setText(named ? name : prompt());   // unlocking an app: its name on top, the prompt below
         if (checking() && wait > 0) {
             subtitle.setText("Try again in " + (wait / 1000 + 1) + " seconds");
             subtitle.setTextColor(Ios.RED);
@@ -121,7 +121,7 @@ public class PinActivity extends Activity {
             subtitle.setText(MIN_LEN + " to " + MAX_LEN + " digits");
             subtitle.setTextColor(0xB3FFFFFF);
         } else {
-            subtitle.setText(name != null ? "to open " + name : "");
+            subtitle.setText(named ? prompt() : "");
             subtitle.setTextColor(0xB3FFFFFF);
         }
         int auto = autoLength();
@@ -151,6 +151,8 @@ public class PinActivity extends Activity {
 
     private void wrong(String msg) {
         refresh(msg);
+        dots.error(true);
+        h.postDelayed(new Runnable() { @Override public void run() { dots.error(false); } }, 700);
         ObjectAnimator.ofFloat(dots, "translationX", 0, -22, 20, -15, 11, -6, 0).setDuration(450).start();
         Vibrator v = getSystemService(Vibrator.class);
         if (v != null) v.vibrate(VibrationEffect.createWaveform(new long[] {0, 35, 70, 35}, -1));
@@ -187,10 +189,18 @@ public class PinActivity extends Activity {
     private void digit(int d) {
         if (entry.length() >= MAX_LEN) return;
         entry.append(d);
-        int auto = autoLength();
         refresh(null);
-        if (auto > 0 && entry.length() == auto) {
-            h.postDelayed(new Runnable() { @Override public void run() { submit(); } }, 110);
+        if (!checking()) return;
+        // unlock the moment the right code is typed, without OK (a code saved before its length
+        // was stored learns it here); a full-length wrong entry counts as a failed attempt
+        if (entry.length() >= MIN_LEN && store.matches(entry.toString())) {
+            store.rememberLength(entry.length());
+            h.postDelayed(new Runnable() { @Override public void run() { submit(); } }, 90);
+            return;
+        }
+        int auto = autoLength();
+        if ((auto > 0 && entry.length() >= auto) || entry.length() == MAX_LEN) {
+            h.postDelayed(new Runnable() { @Override public void run() { submit(); } }, 90);
         }
     }
 
@@ -198,33 +208,34 @@ public class PinActivity extends Activity {
     private View buildUi() {
         Context c = this;
         root = new FrameLayout(c);
-        root.setBackground(Glass.backdrop(c, 0x99000000));
+        root.setBackground(Glass.backdrop(c, 0xB3000000));
 
         LinearLayout col = new LinearLayout(c);
         col.setOrientation(LinearLayout.VERTICAL);
         col.setGravity(Gravity.CENTER_HORIZONTAL);
-        col.setPadding(0, Glass.px(c, 84), 0, Glass.px(c, 30));
+        col.setPadding(0, Glass.px(c, 92), 0, Glass.px(c, 34));
 
         icon = new ImageView(c);
-        LinearLayout.LayoutParams il = new LinearLayout.LayoutParams(Glass.px(c, 44), Glass.px(c, 44));
-        il.bottomMargin = Glass.px(c, 14);
+        LinearLayout.LayoutParams il = new LinearLayout.LayoutParams(Glass.px(c, 60), Glass.px(c, 60));
+        il.bottomMargin = Glass.px(c, 18);
         col.addView(icon, il);
 
-        title = Glass.text(c, "", 20, 0xFFFFFFFF, Ios.regular());
+        title = Glass.text(c, "", 22, 0xFFFFFFFF, Ios.medium());
         title.setGravity(Gravity.CENTER);
-        col.addView(title);
-        subtitle = Glass.text(c, "", 14, 0xB3FFFFFF, Ios.regular());
+        col.addView(title, new LinearLayout.LayoutParams(-1, -2));
+        subtitle = Glass.text(c, "", 15, 0xB3FFFFFF, Ios.regular());
         subtitle.setGravity(Gravity.CENTER);
-        subtitle.setPadding(0, Glass.px(c, 6), 0, 0);
-        col.addView(subtitle);
+        subtitle.setPadding(0, Glass.px(c, 7), 0, 0);
+        col.addView(subtitle, new LinearLayout.LayoutParams(-1, -2));
 
         dots = new Dots(c);
-        LinearLayout.LayoutParams dl = new LinearLayout.LayoutParams(-1, Glass.px(c, 20));
-        dl.topMargin = Glass.px(c, 22);
+        LinearLayout.LayoutParams dl = new LinearLayout.LayoutParams(-1, Glass.px(c, 16));
+        dl.topMargin = Glass.px(c, 30);
         col.addView(dots, dl);
 
         col.addView(new View(c), new LinearLayout.LayoutParams(1, 0, 1f));
 
+        // keypad: bare numerals on the frosted background, no key shapes
         GridLayout grid = new GridLayout(c);
         grid.setColumnCount(3);
         for (int k = 1; k <= 12; k++) {
@@ -234,9 +245,9 @@ public class PinActivity extends Activity {
             else if (k == 11) key = key(c, 0);
             else key = right = textKey(c, false);
             GridLayout.LayoutParams lp = new GridLayout.LayoutParams();
-            lp.width = Glass.px(c, 78);
-            lp.height = Glass.px(c, 78);
-            lp.setMargins(Glass.px(c, 14), Glass.px(c, 8), Glass.px(c, 14), Glass.px(c, 8));
+            lp.width = Glass.px(c, 100);
+            lp.height = Glass.px(c, 76);
+            lp.setMargins(Glass.px(c, 4), Glass.px(c, 2), Glass.px(c, 4), Glass.px(c, 2));
             grid.addView(key, lp);
         }
         col.addView(grid, new LinearLayout.LayoutParams(-2, -2));
@@ -245,34 +256,34 @@ public class PinActivity extends Activity {
     }
 
     private View key(Context c, final int d) {
-        LinearLayout k = new LinearLayout(c);
-        k.setOrientation(LinearLayout.VERTICAL);
-        k.setGravity(Gravity.CENTER);
-        StateListDrawable bg = new StateListDrawable();
-        bg.addState(new int[] {android.R.attr.state_pressed}, oval(0x99FFFFFF));
-        bg.addState(new int[] {}, oval(0x33FFFFFF));
-        k.setBackground(bg);
-        TextView n = Glass.text(c, String.valueOf(d), 34, 0xFFFFFFFF, Ios.light());
+        final TextView n = Glass.text(c, String.valueOf(d), 40, 0xFFFFFFFF, Glass.sans(c, 250));
         n.setGravity(Gravity.CENTER);
-        k.addView(n);
-        if (!LETTERS[d].isEmpty()) {
-            TextView l = Glass.text(c, LETTERS[d], 9.5f, 0xFFFFFFFF, Ios.medium());
-            l.setLetterSpacing(0.22f);
-            l.setGravity(Gravity.CENTER);
-            k.addView(l);
-        }
-        k.setOnClickListener(new View.OnClickListener() {
+        n.setOnTouchListener(new View.OnTouchListener() {
+            @Override public boolean onTouch(View v, android.view.MotionEvent e) {
+                if (e.getActionMasked() == android.view.MotionEvent.ACTION_DOWN) {
+                    n.setTextColor(Glass.ACC);
+                    n.animate().scaleX(1.22f).scaleY(1.22f).setDuration(80).setInterpolator(Glass.EASE).start();
+                } else if (e.getActionMasked() == android.view.MotionEvent.ACTION_UP
+                        || e.getActionMasked() == android.view.MotionEvent.ACTION_CANCEL) {
+                    n.setTextColor(0xFFFFFFFF);
+                    n.animate().scaleX(1f).scaleY(1f).setDuration(360).setInterpolator(Glass.EASE).start();
+                }
+                return false;
+            }
+        });
+        n.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 v.performHapticFeedback(android.view.HapticFeedbackConstants.KEYBOARD_TAP);
                 digit(d);
             }
         });
-        return k;
+        return n;
     }
 
     private TextView textKey(Context c, final boolean isLeft) {
-        TextView t = Glass.text(c, "", 16, 0xFFFFFFFF, Ios.regular());
+        TextView t = Glass.text(c, "", 15, 0xD9FFFFFF, Ios.regular());
         t.setGravity(Gravity.CENTER);
+        Glass.pressable(t);
         t.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 String s = ((TextView) v).getText().toString();
@@ -284,25 +295,15 @@ public class PinActivity extends Activity {
         return t;
     }
 
-    private static GradientDrawable oval(int color) {
-        GradientDrawable g = new GradientDrawable();
-        g.setShape(GradientDrawable.OVAL);
-        g.setColor(color);
-        return g;
-    }
-
-    /** Outline dots that fill white as digits are typed. */
+    /** Code indicator: short rounded dashes that fill white; red while showing an error. */
     private static final class Dots extends View {
         private final Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG);
-        private final Paint ring = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final android.graphics.RectF r = new android.graphics.RectF();
         private int filled, total = 4;
+        private boolean error;
 
         Dots(Context c) {
             super(c);
-            fill.setColor(0xFFFFFFFF);
-            ring.setStyle(Paint.Style.STROKE);
-            ring.setStrokeWidth(Glass.dp(c, 1.2f));
-            ring.setColor(0xFFFFFFFF);
         }
 
         void set(int filled, int total) {
@@ -311,13 +312,19 @@ public class PinActivity extends Activity {
             invalidate();
         }
 
+        void error(boolean on) {
+            error = on;
+            invalidate();
+        }
+
         @Override protected void onDraw(Canvas c) {
-            float r = Glass.dp(getContext(), 6.5f), gap = Glass.dp(getContext(), 26);
-            float w = (total - 1) * gap, x0 = getWidth() / 2f - w / 2f, y = getHeight() / 2f;
+            float w = Glass.dp(getContext(), 22), h = Glass.dp(getContext(), 5), gap = Glass.dp(getContext(), 10);
+            float total_w = total * w + (total - 1) * gap, x = getWidth() / 2f - total_w / 2f, y = getHeight() / 2f;
             for (int i = 0; i < total; i++) {
-                float x = x0 + i * gap;
-                if (i < filled) c.drawCircle(x, y, r, fill);
-                else c.drawCircle(x, y, r - ring.getStrokeWidth() / 2, ring);
+                fill.setColor(error ? Ios.RED : i < filled ? 0xFFFFFFFF : 0x40FFFFFF);
+                r.set(x, y - h / 2, x + w, y + h / 2);
+                c.drawRoundRect(r, h / 2, h / 2, fill);
+                x += w + gap;
             }
         }
     }
