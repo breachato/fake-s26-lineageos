@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- notifications: dark, slightly translucent cards -->
+    <color name="notification_material_background_color">#EB1C1C1F</color>
+    <color name="notification_material_background_dark_color">#EB1C1C1F</color>
+    <color name="notification_material_background_dimmed_color">#CC1C1C1F</color>
+    <!-- a little more room for the rounded-square buttons -->
+    <dimen name="qs_tile_background_size">48dp</dimen>
+    <dimen name="qs_quick_tile_size">52dp</dimen>
+    <!-- shorter drags to open / close the shade and quick settings (stock 60 / 70 / 80dp) -->
+    <dimen name="qs_falsing_threshold">24dp</dimen>
+    <dimen name="swipe_helper_falsing_threshold">32dp</dimen>
+    <dimen name="unlock_falsing_threshold">40dp</dimen>
+</resources>

@@ -44,8 +44,10 @@ rather than from Android's spoofed properties:
   - The driver node `/dev/stpgps` is made unreadable.
   - Google's Wi-Fi/cell network location is turned off.
 - **System fake location.** A persistent system app in `/vendor/app` replaces the `gps`,
-  `network` and `fused` providers with a fixed position in Reykjavík. Apps that need a location
-  still work, and the chip is never turned on.
+  `network` and `fused` providers with a position you choose. Apps that need a location still
+  work, and the chip is never turned on.
+  - A settings-style page lets you pick one of 23 cities or type custom coordinates; the change
+    applies immediately.
 - **Battery and charging.** A persistent system app (`/vendor/app/ChargeAnim`), signed with the
   platform key, does two things:
   - It draws the status-bar battery in place of SystemUI's: a horizontal battery with the
@@ -59,15 +61,46 @@ rather than from Android's spoofed properties:
 - **Tunnel.** Every connection goes through WireGuard, and nothing leaves outside it.
   - The official WireGuard app is always-on with lockdown and holds 8 server configurations.
   - A root daemon (`breachato-tunneld`, started by init) handles each connection:
-    - It sets a new random Wi-Fi MAC when Wi-Fi turns on and after every disconnection, so each
-      connection gets a different MAC and DHCP address.
-    - It brings up a different server on every connection, so the public IP changes too.
+    - It sets a new random Wi-Fi MAC when Wi-Fi turns on and after every real disconnection
+      (carrier off for 4 s), so each connection gets a different MAC and DHCP address.
+    - On every connection it brings the tunnel down and up again. It is fixed to `Cloudflare`;
+      with `FIXED=` left empty it rotates among all the servers instead.
+    - It reads sysfs with shell builtins and rewrites its status file only when something changes,
+      so it costs about one process per second.
+  - WireGuard is on the power-save whitelist, so it may start its VPN service from the daemon's
+    intents while in the background.
   - The **Tunnel** app shows network, MAC, IP and server, and connects to Wi-Fi networks. It also
     has *New identity*, *Change server* and *Check public IP*.
-- **App lock.** F-Droid, Chrome and Files ask for a PIN every time they are opened.
-  - An accessibility service puts a dark keypad on top of the protected app.
-  - The PIN is stored only as a salted SHA-256 hash.
-  - Five wrong attempts lock entry for 30 seconds.
+- **App lock.** The apps you choose ask for a code every time they are opened.
+  - An accessibility service shows a passcode screen on top of the protected app: frosted
+    wallpaper, round translucent keys with letters, outline dots, the app's icon and name.
+  - Entry completes on the last digit, and the first use asks you to choose a code.
+  - Opening the app lock from the home screen asks for the code, then shows its settings: a master
+    switch, a switch per app, the session state and *Change code*.
+  - **Trusted session:** after 3 correct codes in one screen-on session, each at least 20 seconds
+    after the previous one, no code is asked until the screen turns off.
+  - The code is stored only as a salted SHA-256 hash, and five wrong attempts lock entry for
+    30 seconds.
+- **Home, lock screen and system UI.**
+  - A custom launcher (`/vendor/app/Home`): pages of rounded icons with labels, page dots, a search
+    pill and a frosted dock. Pull down to search; long press for dock / app info / uninstall.
+  - A custom lock screen (date, large clock, charging pill, swipe up) raised as the screen turns
+    off, above the keyguard. Swiping up hands over to Android's PIN, which stays the
+    disk-encryption credential.
+  - A SystemUI overlay gives the quick settings rounded-square buttons and a translucent rounded
+    sheet, makes notifications dark and translucent, and shortens the drag needed to open and
+    close the shade. The system accent is lavender and dark theme is on.
+  - The custom apps share `android/common`: Geist / Geist Mono fonts and the glass and
+    settings-style building blocks.
+- **Performance.**
+  - While the screen is on, the daemon keeps all eight cores online. MediaTek's power HAL
+    otherwise rewrites the hotplug limits after boot and on screen events, even down to zero big
+    cores. Thermal limits are untouched.
+  - Animations run at 0.5x.
+  - User-installed apps are in the *restricted* standby bucket and may not run in the background.
+    WireGuard is the exception. At most 16 cached processes are kept.
+- **Double tap to wake.** The ILITEK touch controller's gesture mode is switched on after every
+  boot.
 - **Tracking off.**
   - Google Play Services, GSF and the other Google background packages are disabled.
   - Airplane mode keeps the cellular modem off while Wi-Fi stays on. Emergency calls still turn
@@ -87,8 +120,10 @@ rather than from Android's spoofed properties:
 tools/      PC-side Python: boot logo, boot animation, status-bar battery icons, log filtering,
             sparse conversion
 bootanim/   real boot logs of the two boot phases, already filtered
-android/    overlay, fake-location app, charge/battery app, app lock, Tunnel app and its root
-            daemon (tunnel/breachato-tunneld.sh), notification tool (notifctl), plus build.ps1
+android/    overlays (corners: framework-res, sysui: SystemUI), shared UI and fonts (common),
+            launcher + lock screen (home), fake-location app, charge/battery app, app lock,
+            Tunnel app and its root daemon (tunnel/breachato-tunneld.sh), notification tool
+            (notifctl), plus build.ps1
 device/     scripts run on the phone as root (phh-su)
 device/vendor/zz_oem_bootanim.rc   final init script installed in /vendor/etc/init
 ```

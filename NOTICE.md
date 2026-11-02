@@ -15,6 +15,7 @@ device that contains them.
 | MediaTek MT6755 vendor firmware (`vendor`, `lk`, `logo`, `boot`, ...) | Stock firmware on the device; partly modified on the device by the scripts | Proprietary, MediaTek and the device manufacturer |
 | [WireGuard for Android](https://www.wireguard.com/) | Tunnel engine driven by the Tunnel app and daemon | Apache 2.0 |
 | AOSP platform test key (`build/target/product/security/platform.*`) | Signs the apps that need system permissions; public, not committed | Apache 2.0 |
+| [Geist and Geist Mono](https://github.com/vercel/geist-font) (via google/fonts) | UI fonts bundled in the custom apps (`android/common/assets/fonts`, license file alongside) | SIL Open Font License 1.1 |
 | Roboto Bold (from the device's `/system/fonts`) | Rendered into the status-bar battery digits (`android/chargeanim/res`) | Apache 2.0 |
 | [Pillow](https://python-pillow.org/) | Image rendering in `tools/` | MIT-CMU (HPND) |
 | Python | Runs `tools/` | PSF License |

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.breachato.lock"
-    android:versionCode="1"
-    android:versionName="1.0">
+    android:versionCode="2"
+    android:versionName="2.0">
     <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="30" />
 
-    <application android:label="App lock" android:allowBackup="false">
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Android 11 package visibility: needed to show the protected app's icon and name -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <!-- signature permission (platform key): read the wallpaper for the frosted background -->
+    <uses-permission android:name="android.permission.READ_WALLPAPER_INTERNAL" />
+
+    <application android:icon="@mipmap/ic_launcher" android:label="App lock" android:allowBackup="false">
         <!-- launcher entry: set or change the PIN -->
         <activity android:name=".PinActivity"
             android:theme="@android:style/Theme.Material.NoActionBar"
@@ -19,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SettingsActivity"
+            android:theme="@android:style/Theme.Material.NoActionBar"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:exported="false" />
         <service android:name=".LockService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:exported="true">

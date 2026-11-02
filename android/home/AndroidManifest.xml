@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="it.breachato.home"
+    android:versionCode="1"
+    android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="30" />
+
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <!-- signature permission (platform key): read the wallpaper for the frosted panels -->
+    <uses-permission android:name="android.permission.READ_WALLPAPER_INTERNAL" />
+
+    <!-- persistent: keeps the screen-off receiver alive to raise the lock screen in time -->
+    <application android:name=".HomeApp" android:label="Home"
+        android:allowBackup="false" android:persistent="true">
+        <activity android:name=".HomeActivity"
+            android:theme="@android:style/Theme.Material.Wallpaper.NoTitleBar"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:excludeFromRecents="true"
+            android:resumeWhilePausing="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LockCoverActivity"
+            android:theme="@android:style/Theme.Material.Wallpaper.NoTitleBar"
+            android:showWhenLocked="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:screenOrientation="portrait"
+            android:exported="false" />
+    </application>
+</manifest>

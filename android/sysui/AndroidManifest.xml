@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Static vendor overlay on SystemUI: rounded-square quick-settings buttons, translucent
+     rounded quick-settings sheet and dark translucent notifications. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="it.breachato.overlay.systemui">
+    <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="30" />
+    <overlay android:targetPackage="com.android.systemui" android:isStatic="true" android:priority="999" />
+    <application android:hasCode="false" />
+</manifest>

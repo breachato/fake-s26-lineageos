@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.breachato.fakeloc"
-    android:versionCode="1"
-    android:versionName="1.0">
+    android:versionCode="2"
+    android:versionName="2.0">
     <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="30" />
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <!-- signature permission (platform key): read the wallpaper for the frosted background -->
+    <uses-permission android:name="android.permission.READ_WALLPAPER_INTERNAL" />
 
-    <application android:label="Fake location" android:allowBackup="false"
+    <application android:icon="@mipmap/ic_launcher" android:label="Fake location" android:allowBackup="false"
         android:persistent="true" android:directBootAware="true">
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity android:name=".MainActivity" android:exported="true"
+            android:theme="@android:style/Theme.Material.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

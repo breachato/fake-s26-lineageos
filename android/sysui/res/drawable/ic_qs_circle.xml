@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- quick-settings button background: rounded square instead of the stock circle
+     (same 40dp size and 2.2 viewport; SystemUI tints it) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="2.2"
+    android:viewportHeight="2.2">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M0.66,0.1 H1.54 A0.56,0.56 0 0 1 2.1,0.66 V1.54 A0.56,0.56 0 0 1 1.54,2.1 H0.66 A0.56,0.56 0 0 1 0.1,1.54 V0.66 A0.56,0.56 0 0 1 0.66,0.1 Z" />
+</vector>

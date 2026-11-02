@@ -1,4 +1,4 @@
-# Builds corners.apk (vendor RRO), fakeloc.apk and chargeanim.apk into C:\Users\Lollo\android-sdk\out.
+# Builds the vendor RRO (corners.apk) and every app into C:\Users\Lollo\android-sdk\out.
 # Sources are copied to a short path first: aapt2 chokes on very long Windows paths.
 # native tools write progress to stderr; failures are caught via $LASTEXITCODE
 $ErrorActionPreference = 'Continue'
@@ -11,7 +11,8 @@ $ks  = "$sdk\breachato.jks"
 
 Remove-Item -Recurse -Force $w -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force $w, $out | Out-Null
-Copy-Item -Recurse "$PSScriptRoot\corners", "$PSScriptRoot\fakeloc", "$PSScriptRoot\chargeanim", "$PSScriptRoot\applock", "$PSScriptRoot\tunnel" $w
+Copy-Item -Recurse "$PSScriptRoot\corners", "$PSScriptRoot\sysui", "$PSScriptRoot\common", "$PSScriptRoot\fakeloc", "$PSScriptRoot\chargeanim", `
+    "$PSScriptRoot\applock", "$PSScriptRoot\tunnel", "$PSScriptRoot\home" $w
 
 if (-not (Test-Path $ks)) {
     & keytool -genkeypair -keystore $ks -storepass breachato -keypass breachato -alias b `
@@ -32,15 +33,20 @@ function Sign($unsigned, $final, $platform = $false) {
     if ($LASTEXITCODE) { throw "apksigner $final" }
 }
 
-# --- rounded corners overlay
-& "$bt\aapt2.exe" compile --dir "$w\corners\res" -o "$w\corners.zip"
-if ($LASTEXITCODE) { throw 'aapt2 compile corners' }
-& "$bt\aapt2.exe" link -I $jar --manifest "$w\corners\AndroidManifest.xml" -o "$w\corners_u.apk" "$w\corners.zip"
-if ($LASTEXITCODE) { throw 'aapt2 link corners' }
-Sign "$w\corners_u.apk" "$out\corners.apk"
+# --- resource-only overlays: corners (framework-res) and sysui (SystemUI)
+function BuildOverlay($name) {
+    & "$bt\aapt2.exe" compile --dir "$w\$name\res" -o "$w\$name.zip"
+    if ($LASTEXITCODE) { throw "aapt2 compile $name" }
+    & "$bt\aapt2.exe" link -I $jar --manifest "$w\$name\AndroidManifest.xml" -o "$w\${name}_u.apk" "$w\$name.zip"
+    if ($LASTEXITCODE) { throw "aapt2 link $name" }
+    Sign "$w\${name}_u.apk" "$out\$name.apk"
+}
+BuildOverlay corners
+BuildOverlay sysui
 
 # --- apps: javac -> dx -> apk (manifest + optional res/) + classes.dex
-function BuildApp($name, $platform = $false) {
+# glass: add the shared UI (common/src: it.breachato.ui.Glass) and the Geist fonts as assets
+function BuildApp($name, $platform = $false, $glass = $false) {
     $d = "$w\$name"
     $linkRes = @()
     if (Test-Path "$d\res") {
@@ -48,9 +54,12 @@ function BuildApp($name, $platform = $false) {
         if ($LASTEXITCODE) { throw "aapt2 compile $name" }
         $linkRes = @("$d\res.zip")
     }
+    # fonts stay uncompressed so Typeface can map them straight from the apk
+    if ($glass) { $linkRes += @('-A', "$w\common\assets", '-0', 'ttf') }
     $cls = "$d\classes"; New-Item -ItemType Directory -Force $cls | Out-Null
     # @(): a single source file must still splat as one argument, not as characters
     $srcs = @(Get-ChildItem -Recurse "$d\src" -Filter *.java | ForEach-Object FullName)
+    if ($glass) { $srcs += @(Get-ChildItem -Recurse "$w\common\src" -Filter *.java | ForEach-Object FullName) }
     & javac -nowarn -Xlint:-options -source 8 -target 8 -bootclasspath $jar -d $cls @srcs
     if ($LASTEXITCODE) { throw "javac $name" }
     # d8 30.0.3 crashes under JDK 25; dx handles Java 8 class files fine
@@ -66,9 +75,10 @@ function BuildApp($name, $platform = $false) {
     Sign "$d\${name}_u.apk" "$out\$name.apk" $platform
 }
 
-BuildApp fakeloc
+BuildApp fakeloc $true $true
 BuildApp chargeanim $true
-BuildApp applock
+BuildApp applock $true $true
 BuildApp tunnel $true
+BuildApp home $true $true
 
 Get-ChildItem $out -Filter *.apk | Select-Object Name, Length

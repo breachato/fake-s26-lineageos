@@ -4,6 +4,10 @@
     <dimen name="rounded_corner_radius_adjustment">0px</dimen>
     <bool name="config_supportsRoundedCornersOnWindows">true</bool>
 
+    <!-- system accent (active quick-settings buttons, switches): the site's lavender -->
+    <color name="accent_device_default_light">#FF8B78F0</color>
+    <color name="accent_device_default_dark">#FFA594FF</color>
+
     <!-- stock slot order, plus the charge app's bolt and battery at the far right
          (SystemUI's own battery view is hidden through icon_blacklist) -->
     <string-array name="config_statusBarIcons">

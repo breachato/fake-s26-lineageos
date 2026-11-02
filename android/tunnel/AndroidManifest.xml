@@ -12,7 +12,7 @@
          without the location requirement -->
     <uses-permission android:name="android.permission.NETWORK_SETTINGS" />
 
-    <application android:label="Tunnel" android:allowBackup="false">
+    <application android:icon="@mipmap/ic_launcher" android:label="Tunnel" android:allowBackup="false">
         <activity android:name=".MainActivity"
             android:theme="@android:style/Theme.Material.NoActionBar"
             android:screenOrientation="portrait"

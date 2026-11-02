@@ -19,11 +19,15 @@ final class PinStore {
 
     boolean hasPin() { return p.contains("hash"); }
 
+    /** Digits in the PIN, so entry can complete on the last one; 0 when unknown. */
+    int length() { return p.getInt("len", 0); }
+
     void setPin(String pin) {
         byte[] salt = new byte[16];
         new SecureRandom().nextBytes(salt);
         String s = hex(salt);
-        p.edit().putString("salt", s).putString("hash", hash(s, pin)).putInt("fails", 0).apply();
+        p.edit().putString("salt", s).putString("hash", hash(s, pin)).putInt("len", pin.length())
+                .putInt("fails", 0).apply();
     }
 
     /** True if correct; counts failures and starts the lockout after MAX_TRIES. */
