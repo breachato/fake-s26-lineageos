@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="rounded_corner_radius">24dp</dimen>
+    <dimen name="rounded_corner_radius_adjustment">0px</dimen>
+    <bool name="config_supportsRoundedCornersOnWindows">true</bool>
+</resources>

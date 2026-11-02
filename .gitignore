@@ -1,0 +1,15 @@
+# firmware, images and build output stay out of git
+*.img
+*.img.xz
+*.bin
+*.zip
+*.apk
+*.idsig
+*.jks
+*.keystore
+final_*/
+preview_*/
+__pycache__/
+# raw device logs contain MACs and network names; only the filtered ones are committed
+dmesg*.txt
+logcat*.txt

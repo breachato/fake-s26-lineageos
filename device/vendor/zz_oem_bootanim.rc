@@ -1,0 +1,11 @@
+# custom boot animation lives on the cache partition, exposed as /oem (oemfs)
+on post-fs
+    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/cache /oem ro context=u:object_r:oemfs:s0
+
+# GPS hardware hard-off: driver node unreadable
+on property:sys.boot_completed=1
+    chmod 0000 /dev/stpgps
+
+# after the PIN: second half of the boot animation
+on property:vold.decrypt=trigger_post_fs_data
+    mount none /oem/media2 /oem/media bind

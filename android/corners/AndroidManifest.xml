@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Static vendor overlay on framework-res: gives SystemUI a real corner radius
+     (so ScreenDecorations draws the rounded mask) and lets Launcher3/Quickstep
+     round app windows in recents and open/close animations. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="it.breachato.overlay.corners">
+    <uses-sdk android:minSdkVersion="30" android:targetSdkVersion="30" />
+    <overlay android:targetPackage="android" android:isStatic="true" android:priority="999" />
+    <application android:hasCode="false" />
+</manifest>

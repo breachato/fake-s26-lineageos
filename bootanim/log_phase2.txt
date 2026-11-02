@@ -1,0 +1,97 @@
+[  129.049000] Zygote64Timing: PreloadClasses took to complete: 2732ms
+[  129.064000] Zygote64Timing: CacheNonBootClasspathClassLoaders took to complete: 15ms
+[  129.113000] Zygote64Timing: PreloadResources took to complete: 49ms
+[  129.289000] Zygote64Timing: ZygotePreload took to complete: 3003ms
+[  129.429000] Zygote64Timing: PostZygoteInitGC took to complete: 140ms
+[  129.429000] Zygote64Timing: ZygoteInit took to complete: 3159ms
+[  135.106000] ZygoteInitTiming_lazy: BeginPreload took to complete: 30ms
+[  137.964000] ZygoteInitTiming_lazy: PreloadClasses took to complete: 2857ms
+[  137.983000] ZygoteInitTiming_lazy: CacheNonBootClasspathClassLoaders took to complete: 19ms
+[  138.048000] ZygoteInitTiming_lazy: PreloadResources took to complete: 65ms
+[  140.485000] am_wtf: [0,2849,system_server,-1,SystemServerTiming,SystemServer init took too long. uptimeMillis=140450]
+[  141.639000] am_wtf: [0,0,system_server,-1,WindowManager,Requested window null does not exist]
+[  142.012000] dvm_lock_sample: [system_server,1,android.display,10,WindowManagerService.java,5082,void com.android.server.wm.WindowManagerService$H.handleMessage(android.os.Message),,0,null,2]
+[  151.584000] am_wtf: [0,2849,system_server,-1,SystemServerTiming,finishUserBoot took too long. elapsedTimeMs=151583]
+[  154.180000] am_proc_start: [0,4116,10105,org.lineageos.audiofx,added application,org.lineageos.audiofx]
+[  154.182000] am_proc_bound: [0,4116,org.lineageos.audiofx]
+[  154.239000] am_proc_start: [0,4151,10124,org.lineageos.profiles,service,{org.lineageos.profiles/org.lineageos.profiles.ProfilesTrustAgent}]
+[  154.480000] am_proc_bound: [0,4151,org.lineageos.profiles]
+[  155.674000] ActivityManager: Slow operation: 73ms so far, now at startProcess: returned from zygote!
+[  156.727498] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts:
+[  156.727541] SELinux: initialized (dev dm-1, type ext4), uses xattr
+[  156.752887] selinux: SELinux: Skipping restorecon on directory(/mnt/expand/039c0671-030b-4e4d-a11c-b0c78eec4999)
+[  156.752914] selinux:
+[  156.939300] [HPS] END :(0020)(3)(4) action end(700)(2466)(8)(0) (4)(4)(1)(4) (0)(0)(0) (0)(0)(0) (1)(2466)(1)(0)(2466) (0)(4)(4)
+[  156.961083] [BATTERY] CC mode charge, timer=200 on 210!!
+[  156.970486] [BATTERY] Default CC mode charging : 50000, input current = 50000
+[  157.322454] [HIF-SDIO][I]wmt_lib_get_fwinfor_from_emi:vir addr(0xffffff80063a0bb6)
+[  157.322484] [wlan]wlanDumpFwInforPrintBuff:(RX INFO) [CONNSYS][WIFI]#15342#20#[BCN] pmCmdIndicateBssAborted 6898 BSS[0], Mod[1], Enable[0]
+[  157.322576] [wlan]wlanDumpFwInforPrintBuff:(RX INFO) aRecUpdatedByHost,STA_REC(6)[59:39:8C:9B:C9:0][0]->[0],Net=65,Type=0,Ht=0-0-0,Wmm=1-0-15 Rate 0 AS 19 PH 16335
+[  157.322664] [wlan]wlanDumpFwInforPrintBuff:(RX INFO) t,STA_REC(6)[59:39:8C:9B:C9:0][2]->[0],Net=65,Type=45,Ht=27-0-1,Wmm=1-0-15 Rate 3 AS 19 PH 1633
+[  157.322743] [wlan]wlanDumpFwInforPrintBuff:(RX INFO) [CONNSYS][WIF
+[  157.322775] [wlan]wlanDumpFwInforPrintBuff:(RX INFO) I]#15400#41#<RSN> ucAddRemove: 1,[mtk]key[1,1,0,0,4,0]6:59:39:8C:9B:C9
+[  157.322868] [wlan]wlanDumpFwInforPrintBuff:(RX INFO) :400
+[  157.322943] [wlan]wlanDumpFwInforPrintBuff:(RX INFO) , Enable[0]
+[  157.356222] [wlan]kalPerMonHandler:(SW4 INFO) kalPerMonHandler > Tput: 86112 > AIS:[3068][7696] [35][27], P2P:[0][0] [0][0]
+[  157.553228] SELinux: initialized (dev tmpfs, type tmpfs), uses transition SIDs
+[  157.668831] [ION]ION_IOC_FREE handle is invalid. handle = 0, ret = 0.
+[  158.045133] [wlan]nicUpdateLinkQuality:(NIC INFO) cRssi=-56, cLinkQuality=0, u2LinkSpeed=130
+[  158.316284] [wlan]aisFsmRunEventJoinTimeout:(AIS INFO) aisFsmRunEventJoinTimeout,CurrentState[10]
+[  158.316318] [wlan]cnmChMngrAbortPrivilege:(CNM INFO) ChAbort net=0 token=1
+[  160.086185] ]IPv6: [mtk_net][IPv6]wlan0 has already received RA packet
+[  160.277000] ActivityTaskManager: START u0 {flg=0x10000000 cmp=it.breachato.fakeloc/.MainActivity} from uid 2000
+[  160.664000] am_proc_start: [0,4781,10143,org.lineageos.eleven,broadcast,{org.lineageos.eleven/org.lineageos.eleven.appwidgets.AppWidgetLarge}]
+[  160.664000] ActivityManager: Start proc 4781:org.lineageos.eleven/u0a143 for broadcast {org.lineageos.eleven/org.lineageos.eleven.appwidgets.AppWidgetLarge}
+[  160.718000] am_proc_bound: [0,4781,org.lineageos.eleven]
+[  160.884000] am_proc_start: [0,4804,1000,org.lineageos.lineageparts,broadcast,{org.lineageos.lineageparts/org.lineageos.lineageparts.BootReceiver}]
+[  160.884000] ActivityManager: Start proc 4804:org.lineageos.lineageparts/1000 for broadcast {org.lineageos.lineageparts/org.lineageos.lineageparts.BootReceiver}
+[  160.934000] am_proc_bound: [0,4804,org.lineageos.lineageparts]
+[  161.877000] BroadcastQueue: Permission Denial: receiving Intent { act=android.intent.action.BOOT_COMPLETED flg=0x89000010 (has extras) } to org.lineageos.etar/com.android.calendar.UpgradeReceiver requires android.permission.RECEIVE_BOOT_COMPLETED due to sender null (uid 1000)
+[  164.125000] CAT: BootCompletedReceiver: [ACTION_BOOT_COMPLETED]
+[  165.438000] ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=com.android.launcher3/.uioverrides.QuickstepLauncher (has extras)} from uid 0
+[  166.034000] ActivityManager: Killing 4781:org.lineageos.eleven/u0a143 (adj 985): empty #17
+[  166.034000] am_kill: [0,4781,org.lineageos.eleven,985,empty #17]
+[  166.188000] am_proc_died: [0,4781,org.lineageos.eleven,985,19]
+[  166.564933] [wlan]statsInfoEnvRequest:(RX INFO) statsInfoEnvRequest cmd ok.
+[  166.566102] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 6,00,0,0,2186 7,00,ff,598,0 11,9701,ff,606,0 11,2164,ff,694,0 11,2165,ff,697,0 11,2166,ff,756,0 11,47cc,ff,816,0 11,bb7f,ff,853,0 11,9bac,ff,1085,0 11,e0c2,ff,1086,0 11,e0c3,ff,1139,0 11,9bad,ff,1139,0 11,e0c4,ff,1139,0 11,9bae,ff,1168,0 11,e0c5,ff,1202,0 11,e0c6,ff,1204,0 11,9baf,ff,1351,1 11,9bb0,ff,1352,0 11,9bb1,ff,1352,0 11,9bb2,ff,1352,0 11,9bb3,ff,1400,0 11,9bb4,ff,1401,0 11,9bb5,ff,1453,0 11,9bb6,ff,1515,0 11,5316,ff,1651,0 11,9bb7,ff,1654,0 11,9bb8,ff,1654,0 11,9bb9,ff,1658,0 11,9bba,ff,1659,0 11,9bbb,ff,1689,0 11,842d,ff,1708,0 11,9bbc,ff,1827,0 11,9bbd,ff,2097,0 11,2a44,ff,2198,0 11,2a45,ff,2344,0 11,2a46,ff,2352,0 11,2a47,ff,2353,0 11,2a48,ff,2450,0 11,2a49,ff,2451,0 11,2a4a,ff,2451,0
+[  166.566236] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,2a4b,ff,2451,0 11,2a4c,ff,2650,0 11,2a4d,ff,2675,0 11,2a4e,ff,2998,0 11,2a4f,ff,3101,0 11,2a50,ff,3144,0 11,2a51,ff,3145,0 11,1815,ff,957,8 11,1816,ff,1070,0 11,1817,ff,1091,0 11,1818,ff,1182,1 11,1819,ff,1184,0 11,181a,ff,1193,0 11,181b,ff,1262,0 11,181c,ff,1424,0 11,181d,ff,1496,0
+[  166.566348] [wlan]wlanPktStatusDebugDumpInfo:(RX INFO) 6,585f,0 7,00,0 11,4a3a,0 10,240f,0 10,9e23,0 10,8a55,0 11,9fce,0 11,251d,0 11,00,0 11,00,0 11,490d,0 11,490e,0 11,490f,0 11,123f,0 11,4910,0 11,1242,0 11,1241,0 11,1240,0 11,1243,0 11,1244,0 11,1245,0 11,1246,0 11,1248,0 11,1249,0 11,1247,0 11,124a,0 11,a08d,0 11,1e95,0 11,00,0 11,00,0 11,00,0 11,456b,0 11,456c,0 11,456e,0 11,456f,0 11,4570,0 11,456d,0 11,4571,0 11,4572,0 11,4573,0 11,4574,0 11,4575,0 11,4576,0 11,00,0 11,a39d,0 11,a3a0,0 11,a39e,0 11,a39f,0 11,a3a1,0 11,a3a2,0 11,a3a3,0
+[  166.566401] [wlan]wlanPktStatusDebugDumpInfo:(RX INFO) RX Seq count: 60 [0,1,6000,2,1000,d92,3,4,5,1001,1002,6,7,8,9,a,b,c,d,e,f,10,11,12,13,14,15,16,17,18,19,1a,1003,1b,1004,1c,1d,1e,1f,20,21,22,23,24,25,26,27,28,29,2a,2b,2c,2d,2e,2f,30,31,32,33,34,]
+[  166.566441] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> TOS(71) OK(70 70) PendingPKT(0) SE(0) Num(0 0 0 0)TC resource(1 47 1 1 3)
+[  166.566459] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> HT TRATE (0 1 0 0 0 0 7 55)
+[  166.566471] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> ROK(60 60)
+[  166.566483] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> RCCK (2 1)
+[  166.566500] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> ROFDM (0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0)
+[  166.566519] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> RHT(0 0) (0 0) (0 0) (0 0) (1 1) (0 0) (56 4) (0 0)
+[  166.566534] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> StayIntR_HR2HRD us (0 0 0)
+[  166.566547] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> OTHER (0) (1) (40) (6)
+[  167.335000] ActivityManager: Killing 4804:org.lineageos.lineageparts/1000 (adj 975): empty #17
+[  167.335000] am_kill: [0,4804,org.lineageos.lineageparts,975,empty #17]
+[  167.415000] am_proc_died: [0,4804,org.lineageos.lineageparts,975,19]
+[  169.437933] init: starting service 'mdnsd'...
+[  169.457917] [wlan]wlanoidSetCurrentPacketFilter:(REQ INFO) [MC debug] u4OsPacketFilter=a
+[  172.907690] [STP-PSM] [I]stp_psm_disable_by_tx_rx_density: STP speed rx:0 tx:4182
+[  172.914014] [wlan]nicRxProcessEventPacket:(RX INFO) [F-L]<BCM>Profile=0x24,BaIdx=0 (0001000)
+[  175.258705] [wlan]wlanPktStatusDebugTraceInfo:(TX INFO) grPktStaRec.u4RxIndex reset
+[  176.172754] wmt_lib_ps_handler: 9 callbacks suppressed
+[  176.597380] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,1e4f,ff,0,28 11,1e50,ff,61,0 11,1e51,ff,95,0 11,1e52,ff,180,0 11,1e53,ff,184,0 11,1e54,ff,186,0 11,1e55,ff,275,0 11,1e56,ff,297,0 11,1e57,ff,305,0 11,1e58,ff,360,0 11,1e59,ff,361,0 11,1e5a,ff,363,0 11,1e5b,ff,372,0 11,1e5c,ff,390,0 11,1e5d,ff,501,0 11,1e5e,ff,504,0 11,1e5f,ff,508,0 11,1e60,ff,511,0 11,1e61,ff,512,0 11,b7fe,ff,607,0 11,44e7,ff,611,0 11,b7ff,ff,657,0 11,b800,ff,682,0 11,b801,ff,761,0 11,b802,ff,764,0 11,b803,ff,764,0 11,b804,ff,836,0 11,b805,ff,841,0 11,b806,ff,945,0 11,b807,ff,966,0 11,b808,ff,994,0 11,b809,ff,1115,0 11,b80a,ff,1123,0 11,b80b,ff,1127,0 11,b80c,ff,1128,0 11,b80d,ff,1259,0 11,44fb,ff,1334,0 11,6d60,ff,1850,0 11,6d61,ff,1906,0 11,6d62,ff,1909,0
+[  176.597457] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,6d63,ff,1909,0 11,6d64,ff,1988,0 11,6d65,ff,1990,0 11,6d66,ff,1992,0 11,6d67,ff,1993,0 11,6d68,ff,2073,0 11,6d69,ff,2076,0 11,6d6a,ff,2077,0 11,6d6b,ff,2079,0 11,6d6c,ff,2190,0 11,6d6d,ff,2191,0 11,6d6e,ff,2229,0 11,6d6f,ff,2273,0 11,6d70,ff,2274,0 11,6d71,ff,2279,0 11,6d72,ff,2288,0 11,ccfb,ff,2604,0 11,ccfc,ff,2605,0 11,7cc7,ff,2609,0 11,7cc8,ff,2684,0 11,7cc9,ff,2687,0 11,7cca,ff,2687,0 11,00,ff,2719,0 11,7ccb,ff,2829,0 11,7ccc,ff,2829,0 11,7ccd,ff,2830,0 11,7cce,ff,2831,0 11,7ccf,ff,2831,0 11,7cd0,ff,2884,0 11,7cd1,ff,2885,0 11,7cd2,ff,2887,0 11,7cd3,ff,2888,0 11,7cd4,ff,2888,0 11,7cd5,ff,2888,0 11,7cd6,ff,2888,0 11,7cd7,ff,2888,0 11,7cd8,ff,2888,0 11,7cd9,ff,2889,0 11,7cda,ff,2935,0 11,7cdb,ff,2935,0
+[  176.597532] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,7cdc,ff,2935,0 11,7cdd,ff,2935,0 11,ccfd,ff,2936,0 11,7cde,ff,2940,0 11,7cdf,ff,2940,0 11,7ce0,ff,2940,0 11,7ce1,ff,2940,0 11,7ce2,ff,2947,0 11,7ce3,ff,2947,0 11,7ce4,ff,2947,0 11,7ce5,ff,2947,0 11,7ce6,ff,2958,0 11,7ce7,ff,2958,0 11,7ce8,ff,2958,0 11,7ce9,ff,3031,0 11,7cea,ff,3050,0 11,7ceb,ff,3160,0 11,7cec,ff,3162,0 11,7ced,ff,3162,0 11,fb8c,ff,3201,0 11,fb94,ff,3451,0 11,00,ff,3489,0 11,ccfe,ff,3569,0 11,ccff,ff,3639,0 11,fb9d,ff,3701,0 11,cd00,ff,3781,0 11,cd01,ff,3782,0 11,cd02,ff,3795,0 11,cd03,ff,3859,0 11,cd04,ff,3871,0 11,cd05,ff,3872,0 11,cd06,ff,3872,0 11,cd07,ff,3873,0 11,fba0,ff,3951,0 11,fbed,ff,657,8 11,2a52,ff,916,0 11,2a53,ff,919,0 11,eb4b,ff,1010,0 11,aaf5,ff,1015,0 11,aaf6,ff,1150,0
+[  176.597609] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,aaf7,ff,1172,0 11,aaf8,ff,1172,0 11,aaf9,ff,1277,0 11,aafa,ff,1287,0 11,aafb,ff,1391,0 11,aafc,ff,1525,0 11,b6e2,ff,1786,0 11,b6e3,ff,1838,0 11,b6e4,ff,1893,0 11,b6e5,ff,1894,0 11,cd08,ff,2005,0 11,cd09,ff,2006,0 11,cd0a,ff,2007,0 11,b6e6,ff,2026,0 11,b6e7,ff,2043,0 11,b6e8,ff,2044,0 11,b6e9,ff,2044,0 11,b6ea,ff,2107,0 11,cd0b,ff,2186,0 11,cd0c,ff,2186,0 11,b6eb,ff,2211,0 11,b6ec,ff,2315,0 11,b6ed,ff,2319,0 11,b6ee,ff,2319,0 11,b6ef,ff,2319,0 11,b6f0,ff,2319,0 11,b6f1,ff,2319,0 11,b6f2,ff,2319,0 11,b6f3,ff,2320,0 11,b6f4,ff,2434,0 11,b6f5,ff,2553,0 11,b6f6,ff,2554,0 11,b6f7,ff,2554,0 11,b6f8,ff,2558,0 11,fc72,ff,2659,0 11,cee1,ff,3164,0 11,cee2,ff,3165,0 11,cee3,ff,3245,0 11,cee4,ff,3259,0 11,cee5,ff,3331,0
+[  176.597685] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,cee6,ff,3332,0 11,cee7,ff,3334,0 11,cee8,ff,3336,0 11,cee9,ff,3432,0 11,ceea,ff,3433,0 11,ceeb,ff,3434,0 11,cf04,ff,3523,0 11,cf05,ff,3523,0 11,cf06,ff,3671,0 11,cf07,ff,3674,0 11,cf08,ff,3676,0 11,cf09,ff,3715,0 11,cf0a,ff,3721,0 11,cf0b,ff,3722,0 11,cf0c,ff,3723,0 11,cf0d,ff,3725,0 11,cf0e,ff,3779,0 11,cf0f,ff,3781,0 11,cf10,ff,3789,0 11,cf11,ff,3794,0 11,cf12,ff,3811,0 11,cf13,ff,3812,0 11,cf14,ff,3818,0 11,cf15,ff,3831,0 11,cf16,ff,3852,0 11,cf17,ff,3852,0 11,cf18,ff,3858,0 11,cf19,ff,3862,0 11,cf1a,ff,3868,0 11,cf1b,ff,3874,0 11,cf1c,ff,3882,0 11,cf1d,ff,3886,0 11,cf1e,ff,3890,0 11,cf1f,ff,3890,0 11,cf20,ff,3894,0 11,cf21,ff,3898,0 11,cf22,ff,3964,0 11,cf23,ff,3964,0 11,cf24,ff,3971,0 11,cf25,ff,3972,0
+[  176.597761] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,cf26,ff,3972,0 11,cf27,ff,3978,0 11,cf28,ff,3982,0 11,cf29,ff,3982,0 11,cf2a,ff,3982,0 11,cf2b,ff,3983,0 11,cf2c,ff,3987,0 11,cf2d,ff,3987,0 11,cf2e,ff,3988,0 11,cf2f,ff,3989,0 11,cf30,ff,3992,0 11,cf31,ff,3995,0 11,cf32,ff,3996,0 11,cf33,ff,4011,0 11,cf34,ff,4012,0 11,cf35,ff,4012,0 11,cf36,ff,4014,0 11,cf37,ff,4015,0 11,cf38,ff,4016,0 11,cf39,ff,4016,0 11,cf3a,ff,4016,0 11,cf3b,ff,4016,0 11,cf3c,ff,4017,0 11,cf3d,ff,4017,2 11,cf3e,ff,4018,1 11,cf3f,ff,4020,0 11,cf40,ff,4025,0 11,cf41,ff,4044,0 11,cf42,ff,4051,0 11,cf43,ff,4066,0 11,cf44,ff,4111,0 11,cf45,ff,4112,0 11,cf46,ff,4114,0 11,cf47,ff,4116,0 11,cf48,ff,4117,0 11,cf49,ff,4119,0 11,cf4a,ff,4120,0 11,cf4b,ff,4146,0 11,cf4c,ff,4173,0 11,cf4d,ff,4182,0
+[  176.597837] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,cf4e,ff,4182,0 11,cf4f,ff,4183,0 11,cf50,ff,4189,0 11,cf51,ff,4191,0 11,cf52,ff,4193,0 11,cf53,ff,4199,0 11,cf54,ff,4214,0 11,cf55,ff,4292,1 11,cf56,ff,4294,0 11,cf57,ff,1,0 11,cf58,ff,2,0 11,cf59,ff,12,2 11,cf5a,ff,15,0 11,cf5b,ff,16,0 11,cf5c,ff,22,1 11,cf5d,ff,39,1 11,cf5e,ff,57,0 11,cf5f,ff,59,0 11,cf60,ff,91,0 11,cf61,ff,93,0 11,cf62,ff,95,0 11,cf63,ff,95,0 11,cf64,ff,96,0 11,cf65,ff,99,0 11,cf66,ff,100,0 11,cf67,ff,117,0 11,cf68,ff,120,0 11,cf69,ff,121,0 11,cf6a,ff,125,0 11,cf6b,ff,154,0 11,cf6c,ff,168,0 11,cf6d,ff,175,1 11,cf6e,ff,179,0 11,cf6f,ff,196,0 11,cf70,ff,199,0 11,cf71,ff,200,1 11,cf72,ff,210,0 11,cf73,ff,211,0 11,cf74,ff,228,0 11,cf75,ff,241,0
+[  176.598046] [wlan]wlanPktStatusDebugDumpInfo:(TX INFO) 11,cfc6,ff,1084,0 11,cfc7,ff,1085,0 11,cfc8,ff,1088,0 11,cfc9,ff,1089,0 11,cfca,ff,1091,0 11,cfcb,ff,1094,1 11,cfcc,ff,1100,0 11,cfcd,ff,1101,0 11,cfce,ff,1102,0 11,cfcf,ff,1103,0 11,cfd0,ff,1105,0 11,cfd1,ff,1106,0 11,cfd2,ff,1112,0 11,cfd3,ff,1115,0 11,cfd4,ff,1122,0 11,cfd5,ff,1131,0 11,cfd6,ff,1132,0 11,cfd7,ff,1136,0 11,cfd8,ff,1157,0 11,cfd9,ff,1158,0 11,cfda,ff,1165,0 11,cfdb,ff,1168,0 11,cfdc,ff,1177,0 11,cfdd,ff,1181,0 11,cfde,ff,1201,0 11,cfdf,ff,1204,1 11,cfe0,ff,1249,0
+[  176.598132] [wlan]wlanPktStatusDebugDumpInfo:(RX INFO) 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0 11,03,0 11,00,0 11,01,0 11,02,0
+[  176.598602] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> HT TRATE (1M 6) (0 36 0 0 3 68 165 126)
+[  176.598610] [wlan]statsInfoEnvDisplay:(RX INFO) <stats> TREORDER (0 12 195 0)
+[  176.916018] [wlan]wlanoidGetChannelInfo:(OID INFO) Partial Scan: set channel i=32
+[  176.916035] [wlan]aisFsmSteps:(AIS STATE) [13] TRANSITION: [10] -> [3]
+[  176.916045] [wlan]rlmActivateNetwork:(RLM INFO) rlm: active=1, Type=0, Src=2, SrcVal=3
+[  176.916088] [wlan]scnFsmSteps:(SCN STATE) [19] TRANSITION: [0] -> [1]
+[  176.916128] [wlan]nicTxCmd:(TX INFO) ucCmdSeqNum =57, ucCID =4
+[  176.917373] [wlan]nicRxProcessEventPacket:(RX INFO) [F-L](2) SCAN_STATE_SCAN_START, ScanType 4, PscnFlag 0x0, PscnEn 0
+[  178.072607] init: starting service 'idmap2d'...
+[  178.352890] init: Control message: Could not find 'vendor.camera-provider-2-4' for ctl.restart from pid: 6201 (me.phh.treble.app)
+[  178.353470] init: Control message: Could not find 'camera-provider-2-4' for ctl.restart from pid: 6201 (me.phh.treble.app)
+[  178.493000] ActivityManager: Finished processing BOOT_COMPLETED for u0

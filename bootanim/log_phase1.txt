@@ -1,0 +1,591 @@
+[    0.000000] Reserved memory: initialized node mblock-6-minirdump, compatible id mediatek,minirdump
+[    0.000000] Reserved memory: initialized node mblock-4-ram_console, compatible id mediatek,ram_console
+[    0.000000] Reserved memory: initialized node consys-reserve-memory, compatible id mediatek,consys-reserve-memory
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: Using PSCI v0.1 Function IDs from DT
+[    0.000000] Kernel command line: console=tty0 console=ttyMT0,921600n1 vmalloc=400M slub_max_order=0 slub_debug=OFZPU androidboot.hardware=mt6755 firmware_class.path=/vendor/firmware loop.max_part=7 androidboot.boot_devices=bootdevice,11230000.mmc flogo=0 fram=-1 from=-1 androidboot.verifiedbootstate=orange root=/dev/ram androidboot.veritymode=enforcing bootopt=64S3,32N2,64N2 buildvariant=user androidboot.atm=disabled androidboot.meta_log_disable=0 emmc_life_a=4 emmc_life_b=4 lcm_info=ilip6h87_dsi_vdo_hdplus1560 printk.disable_uart=1 bootprof.pl_t=4458 bootprof.lk_t=7900 androidboot.serialno=<redacted> androidboot.bootreason=reboot gpt=1 usb2jtag_mode=0 mrdump_ddrsv=yes androidboot.dtb_idx=0 androidboot.dtbo_idx=0
+[    0.000000] Memory: 2889856K/3127360K available (11318K kernel code, 1548K rwdata, 4528K rodata, 540K init, 3665K bss, 237504K reserved, 0K cma-reserved)
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.002149] SELinux: Initializing.
+[    0.002196] SELinux: Starting in permissive mode
+[    0.165080] Brought up 8 CPUs
+[    0.165116] SMP: Total of 8 processors activated (208.00 BogoMIPS).
+[    0.247506] [PWRAP] HAL init: version Revision
+[    0.265194] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.270178] [DISP]init_log_buffer success
+[    0.382580] [PMIC] is_battery_remove =0 is_wdt_reboot=1
+[    0.385297] vcn33_wifi: 3300 <--> 3600 mV at 3300 mV
+[    0.393037] [ION]ion_init()
+[    0.393426] [ION]ion_drv_probe() heap_nr=5
+[    0.435440] Freeing initrd memory: 768K
+[    0.446712] fuse init (API version 7.23)
+[    0.447110] SELinux: Registering netfilter hooks
+[    0.457288] zram: Created 1 device(s) ...
+[    0.458585] [register_battery_percent_notify] prio_val=1
+[    0.458595] [register_battery_oc_notify] prio_val=1
+[    0.458604] [register_low_battery_notify] prio_val=1
+[    0.460174] [gpufreq] Segment code = 0x2
+[    0.460183] [gpufreq] mt_gpufreq_dvfs_table_type: 0
+[    0.460240] [gpufreq] gpufreqs_power[0]: khz=676000, volt=100000, power=948
+[    0.460304] [gpufreq] GPU current F=520000/520000KHz, V=1000/1000mV, cur_idx=1, cur_OPPidx=1
+[    0.485191] C2K_USB_NOTE,<init 714>, rawbulk functions init.
+[    0.485222] C2K_USB_NOTE,<rawbulk_alloc_function 603>, rawbulk_alloc_function
+[    0.492574] [eta6947_driver_probe]
+[    0.499056] [eta6947_init] Success to register eta6947 i2c driver.
+[    0.501400] musb-hdrc: version 6.0, ?dma?, otg (peripheral+host)
+[    0.518890] [GAMMA] disp_gamma_write_lut_reg: gamma table [0] not initialized
+[    0.528068] [ION]ion_drv_create_heap: create heap: ion_fb_heap
+[    0.530297] [MALI] Midgard r29p0-01dev0 DDK kernel device driver. GPU probe() begin.
+[    0.530374] mali 13040000.mali: Continuing without Mali clock control
+[    0.530418] [MALI] Alloc mtk_config
+[    0.530862] [Mali] get_devinfo_with_index = 0x3 , gpu_efuse = 0x0.
+[    0.531029] mali 13040000.mali: GPU identified as 0x0860 r0p2 status 0
+[    0.531483] mali 13040000.mali: Protected mode not available
+[    0.532158] mali 13040000.mali: Probed as mali0
+[    0.532169] [MALI] Midgard r29p0-01rel0 DDK kernel device driver. GPU probe() end.
+[    0.552566] MTK-BTIF[I]btif_chrdev_init:devuce number allocation succeed
+[    0.568061] ATF reserved memory: 0x7ff80000 - 0x7ffbffff (0x40000)
+[    0.575413] PPP generic driver version 2.4.2
+[    0.575513] PPP BSD Compression module registered
+[    0.575533] PPP Deflate Compression module registered
+[    0.575566] PPP MPPE Compression module registered
+[    0.576214] usbcore: registered new interface driver ums-onetouch
+[    0.579056] kpd: Normal Boot long press reboot selection
+[    0.580642] [tpd_em_log] :register device successfully
+[    0.581358] [FTS_TS]fts_tpd_driver_init: Enter
+[    0.581369] [FTS_TS/I]fts_tpd_driver_init:Driver version: Focaltech V3.4 20211214 0
+[    0.581384] ILITEK: (ilitek_plat_dev_init, 520): ILITEK TP driver init for MTK
+[    0.583951] [battery_meter_probe] probe
+[    0.584523] device-mapper: uevent: version 1.0.3
+[    0.594618] [+silead_fp-] silfp_ree_init, version=0.1.2
+[    0.596044] usbcore: registered new interface driver snd-usb-audio
+[    0.612828] soc-audio soc-audio: ASoC: machine mt-snd-card should use snd_soc_register_card()
+[    0.618125] soc-audio soc-audio: snd-soc-dummy-dai <-> snd-soc-dummy-dai mapping ok
+[    0.622210] Mirror/redirect action on
+[    0.622271] Actions configured
+[    0.622361] nf_conntrack version 0.5.0 (16384 buckets, 65536 max)
+[    0.630668] Registered cp15_barrier emulation handler
+[    0.630689] Registered setend emulation handler
+[    0.633287] registered taskstats version 1
+[    0.642695] [ALS/PS] stk3x3x_i2c_probe: driver version: v3.x.3 for android10.x
+[    0.642733] [ALS/PS] wangrui obj->irq_node name=alsps
+[    0.679400] mmc0: BKOPS_EN bit is not set
+[    0.710128] mmc0: new HS400 MMC card at address 0001
+[    0.710752] mmcblk0: mmc0:0001 RX1BMB 29.1 GiB
+[    0.711087] mmcblk0boot0: mmc0:0001 RX1BMB partition 1 4.00 MiB
+[    0.711306] [HPS] END :(0200)(4)(4) action end(279)(122)(0)(0) (4)(4)(1)(0) (0)(0)(0) (279)(2)(0) (0)(122)(2)(0)(122) (0)(4)(0)
+[    0.711749] mmcblk0rpmb: mmc0:0001 RX1BMB partition 3 4.00 MiB
+[    0.714961] mmcblk0: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 p21 p22 p23 p24 p25 p26 p27 p28 p29 p30 p31
+[    0.817779] <ACCELEROMETER> acc_misc_init 602 : accel_fops address: ffffffc000c1b8a8!!
+[    0.819636] [DEVAPC] Violation(R) - Process:swapper/0, PID:1, Vio Addr:0x0, Bus ID:0x0, Dom ID:0x0, DBG0:0x0
+[    0.819708] [DEVAPC] Access Violation Slave: IMGSYS_CONFIG (index=133)
+[    0.819723] [DEVAPC] Access Violation Slave: VDEC_GLOBAL_CON (index=149)
+[    0.819733] [DEVAPC] Access Violation Slave: VENC_GLOBAL_CON (index=152)
+[    0.831536] wusb3801x 4-0060: wusb3801_probe start
+[    0.832068] wusb3801x 4-0060: VendorID register: 0x16
+[    0.832082] wusb3801x 4-0060: Vendor id: 0x06, Version id: 0x02
+[    0.832585] wusb3801x 4-0060: VendorSUBID register: 0x80
+[    0.832599] wusb3801x 4-0060: dev_node->name=wusb3801x.
+[    0.832614] wusb3801x 4-0060: data->int_gpio=-2
+[    0.832642] wusb3801x 4-0060: data->usb_switch_gpio=853
+[    0.832658] wusb3801x 4-0060: data->pwn-gpio=934
+[    0.832682] wusb3801x 4-0060: data->init_mode=36.
+[    0.832695] wusb3801x 4-0060: data->dfp_power=1.
+[    0.832708] wusb3801x 4-0060: Fixed drp time and set default (40ms:40ms)
+[    0.832723] wusb3801x 4-0060: init_mode:36 dfp_power:1 toggle_time:0
+[    0.833278] wusb3801x 4-0060: request_irq irqnum=387
+[    0.833373] wusb3801x 4-0060: wusb3801_reset_device
+[    0.834705] wusb3801x 4-0060: wusb3801_init_force_dfp_power: host current (0)
+[    0.836864] wusb3801x 4-0060: wusb3801_set_mode: mode (0x24) (0x24)
+[    0.837314] wusb3801x 4-0060: wusb3801_detach: type[0x00] chipstate[0x01]
+[    0.838163] wusb3801x 4-0060: mode[0x24], host_cur[0x02], dttime[0x00]
+[    0.838994] wusb3801x 4-0060: wusb3801_probe WUSB3801_REG_TEST_09 : 0x00
+[    0.840320] wusb3801x 4-0060: wusb3801_probe WUSB3801_REG_STATUS : 0x00
+[    0.840666] wusb3801x 4-0060: wusb3801_probe end
+[    0.840892] [USB]android_init_functions: f->dev_name = f_ffs, f->name = ffs
+[    0.840969] [USB]android_init_functions: init ffs success!!
+[    0.840985] [USB]android_init_functions: f->dev_name = f_acm, f->name = acm
+[    0.841234] [USB]android_init_functions: init acm success!!
+[    0.841254] [USB]android_init_functions: f->dev_name = f_mtp, f->name = mtp
+[    0.851521] [USB]android_init_functions: init mtp success!!
+[    0.851535] [USB]android_init_functions: f->dev_name = f_ptp, f->name = ptp
+[    0.851579] [USB]android_init_functions: init ptp success!!
+[    0.851591] [USB]android_init_functions: f->dev_name = f_eem, f->name = eem
+[    0.851633] [USB]android_init_functions: init eem success!!
+[    0.851649] [USB]android_init_functions: f->dev_name = f_gser, f->name = gser
+[    0.851881] [USB]android_init_functions: init gser success!!
+[    0.851897] [USB]android_init_functions: f->dev_name = f_rndis, f->name = rndis
+[    0.851939] [USB]android_init_functions: init rndis success!!
+[    0.851968] [USB]android_init_functions: f->dev_name = f_mass_storage, f->name = mass_storage
+[    0.852033] Mass Storage Function, version: 2009/09/11
+[    0.852215] [USB]android_init_functions: init mass_storage success!!
+[    0.852237] [USB]android_init_functions: f->dev_name = f_accessory, f->name = accessory
+[    0.852330] [USB]android_init_functions: init accessory success!!
+[    0.852343] [USB]android_init_functions: f->dev_name = f_audio_source, f->name = audio_source
+[    0.852399] [USB]android_init_functions: init audio_source success!!
+[    0.852412] [USB]android_init_functions: f->dev_name = f_midi, f->name = midi
+[    0.852454] [USB]android_init_functions: init midi success!!
+[    0.852470] [USB]android_init_functions: f->dev_name = f_hid, f->name = hid
+[    0.852531] [USB]android_init_functions: init hid success!!
+[    0.862724] aw9320x driver version v1.6.0
+[    0.863625] battery_init
+[    0.865812] mtk-tpd: enter tpd_probe, 457
+[    0.866012] ILITEK: (tpd_local_init, 491): TPD init device driver
+[    0.866025] ILITEK: (ili_dev_init, 1765): TP Interface: I2C
+[    0.866277] ILITEK: (ilitek_plat_gpio_register, 219): TP INT: 1
+[    0.866287] ILITEK: (ilitek_plat_gpio_register, 220): TP RESET: 0
+[    0.869171] ILITEK: (ili_tddi_init, 1616): driver version = 3.0.12.0.250227
+[    0.879448] BOOTPROF: 879.441924:initcall: battery_init 15.808154ms
+[    0.879497] battery_init_work
+[    0.890358] ILITEK: (ili_reset_ctrl, 1479): TP HW RST
+[    0.978102] ILITEK: (ili_set_tp_data_len, 871): Unknow TP data format
+[    0.985894] ILITEK: (ili_update_tp_module_info, 1587): Couldn't find any tp modules, applying default settings
+[    0.986015] ILITEK: (ili_node_init, 3993): Succeed to create mp_lcm_on_test under /proc
+[    0.986028] ILITEK: (ili_node_init, 3993): Succeed to create mp_lcm_off_test under /proc
+[    0.997770] mtk-tpd: [mtk-tpd]tpd_probe, tpd_driver_name=ILITEK_TDDI
+[    1.010975] ILITEK: (ilitek_tddi_fw_update_block_info, 1790): New FW Core version = 2010101
+[    1.011000] ILITEK: (ilitek_tddi_fw_update_block_info, 1816): report_info_block : nReserved00 = 7, nReportResolutionMode = 1, nCustomerType = 7
+[    1.011032] ILITEK: (ilitek_tddi_fw_update_block_info, 1845): New Firmware AP Version = 0xa8000201, New Firmware MP Version = 0xa8000100,
+[    1.012921] mtk-tpd: Cap touch panel driver
+[    1.013063] input: mtk-tpd as /devices/virtual/input/input2
+[    1.013150] BOOTPROF: 1013.144924:probe: probe=platform_drv_probe drv=mtk-tpd(ffffffc00115e760) 147.331462ms
+[    1.014458] [BAT_probe] power_supply_register Battery Success !!
+[    1.014581] battery_kthread_hrtimer_init : done
+[    1.026199] [battery_probe] battery kthread init done
+[    1.057020] #0: mt-snd-card
+[    1.057406] Freeing unused kernel memory: 540K
+[    1.057477] Freeing alternatives memory: 184K
+[    1.086216] wusb3801x 4-0060: wusb3801_work_handler
+[    1.087206] wusb3801x 4-0060: wusb3801_work_handler WUSB3801_REG_STATUS : 0x88
+[    1.087219] wusb3801x 4-0060: wusb3801_work_handler: int_sts[0x01]
+[    1.087230] wusb3801x 4-0060: chip->attached=0
+[    1.087713] wusb3801x 4-0060: test_cc_patch
+[    1.100985] [battery_meter_initial] SOC_BY_HW_FG not done
+[    1.105506] ILITEK: (ili_set_tp_data_len, 1124): TP mode = 0, format = 0, len = 72
+[    1.147899] ILITEK: (ili_ic_get_fw_ver, 2533): Firmware AP Version = 168.0.2.1
+[    1.147909] ILITEK: (ili_ic_get_fw_ver, 2534): Firmware MP Version = 168.0.1.0
+[    1.147922] ILITEK: (ilitek_fw_flash_upgrade, 1657): New Firmware AP Version = 0xa8000201, Current Firmware AP Version = 0xa8000201, New Firmware MP Version = 0xa8000100, Current Firmware MP Version = 0xa8000100
+[    1.165080] wusb3801x 4-0060: test_cc_patch L1 wr_cnt=10
+[    1.200313] EXT4-fs (mmcblk0p28): mounted filesystem without journal. Opts:
+[    1.207538] init 3: Skip mounting partition: /oem
+[    1.207577] init 3: Skip mounting partition: /product
+[    1.207600] init 3: Skip mounting partition: /system_ext
+[    1.223842] wusb3801x 4-0060: wusb3801_attach: cc_sts[0x00]
+[    1.267457] init 7: Skipped setting INIT_AVB_VERSION (not in recovery mode)
+[    1.385984] init: Skip mounting partition: /oem
+[    1.386444] init: Loading SELinux policy
+[    1.392060] init: Compiling SELinux policy
+[    1.467640] wusb3801x 4-0060: wusb3801_attach: cc_test_patch rc[0x89]
+[    1.467648] wusb3801x 4-0060: sts[0x01], type[0x08],chip->state[0x01]
+[    1.467656] wusb3801x 4-0060: wusb3801_attach: chip current is 0, set default
+[    1.467664] wusb3801x 4-0060: wusb3801_src_detected: WUSB3801_STATE_ATTACHED_SNK
+[    1.676742] ILITEK: (ilitek_tddi_ic_check_protocol_ver, 3030): update protocol version = 50600
+[    1.676749] ILITEK: (ili_ic_get_protocl_ver, 3087): Protocol version = 5.6.0
+[    1.696825] ILITEK: (ili_ic_get_core_ver, 2459): Core version = 2.1.1.1
+[    1.737620] ILITEK: (ili_ic_get_tp_info, 2749): Get tp info successfully, retry 0 times
+[    1.737639] ILITEK: (ili_ic_get_tp_info, 2765): TP Info: min_x = 0, min_y = 0, max_x = 2047, max_y = 2047
+[    1.737646] ILITEK: (ili_ic_get_tp_info, 2766): TP Info: xch = 18, ych = 32, stx = 50, srx = 50
+[    1.756910] ILITEK: (ili_ic_get_panel_info, 2574): Get panel info successfully, retry 0 times
+[    1.776551] ILITEK: (ili_ic_get_panel_info, 2601): Get report format info successfully, retry 0 times
+[    1.776567] ILITEK: (ili_ic_get_panel_info, 2629): PenType = 0x3, Customer Type OFF = 0x7
+[    1.776574] ILITEK: (ili_ic_get_panel_info, 2688): Panel info: width = 720, height = 1560
+[    1.776581] ILITEK: (ili_ic_get_panel_info, 2689): Transfer touch coordinate = ON
+[    1.776587] ILITEK: (ili_ic_get_panel_info, 2690): Customer Type = 7
+[    1.776593] ILITEK: (ili_ic_get_panel_info, 2691): Report Resolution Format Mode = 1
+[    1.776599] ILITEK: (ili_ic_get_panel_info, 2694): Pen Type = 3
+[    1.776607] ILITEK: (ili_ic_get_panel_info, 2695): Pen Info Data, nPxRaw = 0, nPyRaw = 0, nPxVa = 0, nPyVa = 0, nPenX_MP = 0, nPenChipnum = 0, nPenSamplenum = 0
+[    1.776613] ILITEK: (ili_ic_get_panel_info, 2696): Cascade Info Data, nDisable = 1, nNum = 0
+[    1.796922] ILITEK: (ili_fw_upgrade_handler, 777): Registre touch to input subsystem
+[    3.756895] [BATTERY] Default CC mode charging : 50000, input current = 50000
+[    3.770589] [battery_meter_set_fg_int]fg_bat_int_coulomb_pre -2 1p:17
+[    3.789253] [BATTERY] CC mode charge, timer=0 on 10!!
+[    4.836134] connection_work: 6 callbacks suppressed
+[    5.232435] init: /system/bin/secilc: Hello, parsing /system/etc/selinux/plat_sepolicy.cil
+[    5.232505] init: /system/bin/secilc: Hello, parsing /system_ext/etc/selinux/system_ext_sepolicy.cil
+[    5.232522] init: /system/bin/secilc: Hello, parsing /vendor/etc/selinux/plat_pub_versioned.cil
+[    5.232646] init: Loading compiled SELinux policy
+[    5.238257] SELinux: 2048 avtab hash slots, 44586 rules.
+[    5.275095] SELinux: 1 users, 4 roles, 2786 types, 0 bools, 1 sens, 1024 cats
+[    5.275105] SELinux: 99 classes, 44586 rules
+[    5.279437] SELinux: Completing initialization.
+[    5.279448] SELinux: Setting up existing superblocks.
+[    5.279472] SELinux: initialized (dev rootfs, type rootfs), uses genfs_contexts
+[    5.279485] SELinux: initialized (dev bdev, type bdev), not configured for labeling
+[    5.279547] SELinux: initialized (dev proc, type proc), uses genfs_contexts
+[    5.279580] SELinux: initialized (dev tmpfs, type tmpfs), uses transition SIDs
+[    5.279645] SELinux: initialized (dev debugfs, type debugfs), uses genfs_contexts
+[    5.300644] SELinux: initialized (dev sockfs, type sockfs), uses task SIDs
+[    5.300697] SELinux: initialized (dev tracefs, type tracefs), uses genfs_contexts
+[    5.331534] SELinux: initialized (dev pipefs, type pipefs), uses task SIDs
+[    5.331549] SELinux: initialized (dev anon_inodefs, type anon_inodefs), not configured for labeling
+[    5.331558] SELinux: initialized (dev aio, type aio), not configured for labeling
+[    5.331570] SELinux: initialized (dev devpts, type devpts), uses transition SIDs
+[    5.331594] SELinux: initialized (dev configfs, type configfs), uses genfs_contexts
+[    5.331610] SELinux: initialized (dev selinuxfs, type selinuxfs), uses genfs_contexts
+[    5.331803] SELinux: initialized (dev sysfs, type sysfs), uses genfs_contexts
+[    5.370491] SELinux: initialized (dev mmcblk0p28, type ext4), uses xattr
+[    5.411850] selinux: SELinux: Loaded policy from /dev/sepolicy.HoaCPr
+[    5.411862] selinux:
+[    5.452890] selinux: SELinux: Loaded file_contexts
+[    5.485064] init: init second stage started!
+[    5.561338] init: Init cannot set 'ro.boot.hardware' to 'mt6755': Read-only property was already set
+[    5.564996] init: Overriding previous 'ro.' property 'ro.control_privapp_permissions':'log' with new value 'disable'
+[    5.573898] init: Overriding previous 'ro.' property 'ro.config.notification_sound':'pixiedust.ogg' with new value 'Argon.ogg'
+[    5.573964] init: Overriding previous 'ro.' property 'ro.config.ringtone':'Ring_Synth_04.ogg' with new value 'Orion.ogg'
+[    5.613602] selinux: SELinux: Could not get canonical path for /metadata/ota/rollback-indicator restorecon: No such file or directory.
+[    5.613681] selinux: SELinux: Could not stat /metadata/gsi: No such file or directory.
+[    5.621914] init: Activated APEX 'com.android.apex.cts.shim' in /system_ext/apex/com.android.apex.cts.shim.v1_with_prebuilts to /apex/com.android.apex.cts.shim, version 1
+[    5.623776] init: Activated APEX 'com.android.art' in /system_ext/apex/com.android.art.release to /apex/com.android.art, version 1
+[    5.625767] init: Activated APEX 'com.android.i18n' in /system_ext/apex/com.android.i18n to /apex/com.android.i18n, version 1
+[    5.630558] init: Activated APEX 'com.android.runtime' in /system_ext/apex/com.android.runtime to /apex/com.android.runtime, version 1
+[    5.634090] init: Activated APEX 'com.android.vndk.v30' in /system_ext/apex/com.android.vndk.current to /apex/com.android.vndk.v30, version 1
+[    5.650641] init: Added '/vendor/etc/init/hw/init.sensor_1_0.rc' to import list
+[    5.659086] init: Parsing file /vendor/etc/init/hw/init.sensor_1_0.rc...
+[    5.668574] init: Parsing file /system/etc/init/cameraserver.rc...
+[    5.670657] init: Parsing file /system/etc/init/gpuservice.rc...
+[    5.679874] init: Parsing file /system/etc/init/mtpd.rc...
+[    5.687440] init: Parsing file /system/etc/init/wifi.rc...
+[    5.687934] init: Parsing file /system/etc/init/wificond.rc...
+[    5.696709] init: Parsing file /vendor/etc/init/camerahalserver.rc...
+[    5.697307] init: Parsing file /vendor/etc/init/fuelgauged_init.rc...
+[    5.699436] init: Parsing file /vendor/etc/init/init.gps_drv.rc...
+[    5.702389] init: Parsing file /vendor/etc/init/init.wlan_drv.rc...
+[    5.702634] init: Parsing file /vendor/etc/init/init.wmt_drv.rc...
+[    5.705052] init: Parsing file /vendor/etc/init/mtk_agpsd_p.rc...
+[    5.711702] init: Parsing file /vendor/etc/init/wlan_assistant.rc...
+[    5.712998] init: processing action (SetupCgroups) from (<Builtin Action>:0)
+[    5.717329] SELinux: initialized (dev cgroup, type cgroup), uses genfs_contexts
+[    5.720164] init: processing action (SetKptrRestrict) from (<Builtin Action>:0)
+[    5.720679] init: processing action (TestPerfEventSelinux) from (<Builtin Action>:0)
+[    5.720886] init: processing action (early-init) from (/system/etc/init/hw/init.rc:20)
+[    5.731556] init: starting service 'exec 1 (/system/bin/linkerconfig --target /linkerconfig/bootstrap)'...
+[    5.761350] init: starting service 'ueventd'...
+[    5.764891] init: starting service 'apexd-bootstrap'...
+[    5.841147] init: processing action (ro.product.cpu.abilist32=* && early-init) from (/system/etc/init/hw/init.rc:90)
+[    5.841547] init: starting service 'boringssl_self_test32'...
+[    5.992160] init: processing action (early-init) from (/init.environ.rc:2)
+[    5.992418] init: processing action (early-init) from (/vendor/etc/init/hw/init.mt6755.rc:17)
+[    6.013497] init: processing action (wait_for_coldboot_done) from (<Builtin Action>:0)
+[    6.878730] init: processing action (MixHwrngIntoLinuxRng) from (<Builtin Action>:0)
+[    6.878866] init: processing action (SetMmapRndBits) from (<Builtin Action>:0)
+[    6.879736] init: processing action (KeychordInit) from (<Builtin Action>:0)
+[    7.026281] init: Command 'KeychordInit' action=KeychordInit (<Builtin Action>:0) took 146ms and succeeded
+[    7.026658] init: processing action (init) from (/system/etc/init/hw/init.rc:119)
+[    7.060388] SELinux: initialized (dev fusectl, type fusectl), uses genfs_contexts
+[    7.099512] SELinux: initialized (dev pstore, type pstore), uses genfs_contexts
+[    7.102130] Registered swp emulation handler
+[    7.108131] init: starting service 'logd'...
+[    7.114162] init: starting service 'lmkd'...
+[    7.119353] init: starting service 'servicemanager'...
+[    7.122788] init: starting service 'hwservicemanager'...
+[    7.127450] init: starting service 'vndservicemanager'...
+[    7.134340] init: processing action (ro.debuggable=1 && init) from (/system/etc/init/hw/init.rc:1062)
+[    7.136316] init: starting service 'console'...
+[    7.150781] init: processing action (init) from (/vendor/etc/init/hw/init.mt6755.rc:24)
+[    7.179931] init: starting service 'exec 2 (/system/bin/chmod 777 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/proinfo)'...
+[    7.209613] init: processing action (init) from (/system/etc/init/audioserver.rc:56)
+[    7.211690] init: processing action (init) from (/system/etc/init/lineage-iosched.rc:1)
+[    7.217103] init: processing action (init) from (/vendor/etc/init/netdagent.rc:8)
+[    7.218305] init: processing action (late-init) from (/system/etc/init/hw/init.rc:420)
+[    7.218404] init: processing action (late-init) from (/vendor/etc/init/hw/init.mt6755.rc:43)
+[    7.219362] init: processing action (late-init) from (/system/etc/init/atrace.rc:3)
+[    7.228749] init: processing action (queue_property_triggers) from (<Builtin Action>:0)
+[    7.228907] init: processing action (early-fs) from (/system/etc/init/hw/init.rc:456)
+[    7.229531] init: starting service 'vold'...
+[    7.232629] init: processing action (fs) from (/vendor/etc/init/hw/init.mt6755.rc:91)
+[    7.236471] init: [libfs_mgr]mount_with_alternatives(): skipping mount due to invalid magic, mountpoint=/data blk_dev=/dev/block/mmcblk0p30 rec[2].fs_type=ext4
+[    7.238274] init: [libfs_mgr]Running /system/bin/e2fsck on /dev/block/mmcblk0p8
+[    7.272470] e2fsck: Pass 5: Checking group summary information
+[    7.280653] EXT4-fs (mmcblk0p8): mounted filesystem with ordered data mode. Opts: noauto_da_alloc,commit=1,nodelalloc
+[    7.379283] init: Command 'mount_all /vendor/etc/fstab.mt6755' action=fs (/vendor/etc/init/hw/init.mt6755.rc:94) took 144ms and succeeded
+[    7.407745] SELinux: initialized (dev functionfs, type functionfs), uses genfs_contexts
+[    7.410809] init: processing action (fs) from (/system/etc/init/logd.rc:28)
+[    7.411786] init: processing action (fs) from (/system/etc/init/wifi.rc:25)
+[    7.412336] init: processing action (post-fs) from (/system/etc/init/hw/init.rc:460)
+[    7.412920] init: starting service 'exec 4 (/system/bin/vdc checkpoint markBootAttempt)'...
+[    7.463123] selinux: SELinux: Could not stat /metadata/apex: No such file or directory.
+[    7.464029] init: processing action (post-fs) from (/vendor/etc/init/hw/init.mt6755.rc:103)
+[    7.472712] init: starting service 'aee_aedv'...
+[    7.476162] init: starting service 'aee_aedv64'...
+[    7.479193] init: processing action (post-fs) from (/system/etc/init/atrace_userdebug.rc:7)
+[    7.479803] init: processing action (ro.boot.bootreason=* && post-fs) from (/system/etc/init/bootstat.rc:6)
+[    7.480585] init: processing action (post-fs) from (/system/etc/init/gsid.rc:8)
+[    7.484195] init: processing action (post-fs) from (/system/etc/init/recovery-refresh.rc:1)
+[    7.484938] init: starting service 'exec 5 (/system/bin/recovery-refresh)'...
+[    7.487519] init: processing action (post-fs) from (/system/etc/init/twrp.rc:1)
+[    7.488353] init: starting service 'exec 6 (/system/bin/vndk-detect)'...
+[    7.590896] init: starting service 'exec 7 (/system/bin/twrp.sh)'...
+[    7.606458] init: processing action (post-fs) from (/system/etc/init/vndk.rc:1)
+[    7.711766] init: starting service 'exec 9 (/system/bin/rw-system.sh)'...
+[    7.882445] EXT4-fs (mmcblk0p28): couldn't mount RDWR because of unsupported optional features (4000)
+[    7.899283] EXT4-fs (mmcblk0p28): re-mounted. Opts:
+[   11.227768] init: processing action (post-fs) from (/vendor/etc/init/zz_oem_bootanim.rc:2)
+[   11.229721] SELinux: initialized (dev mmcblk0p29, type ext4), uses mountpoint labeling
+[   11.231647] init: processing action (late-fs) from (/system/etc/init/hw/init.rc:524)
+[   11.232552] init: starting service 'vendor.keymaster-3-0'...
+[   11.236546] init: starting service 'wmt_loader'...
+[   11.240421] init: starting service 'wmt_launcher'...
+[   11.243797] init: processing action (post-fs-data) from (/system/etc/init/hw/init.rc:533)
+[   11.244235] init: starting service 'exec 10 (/system/bin/vdc checkpoint prepareCheckpoint)'...
+[   11.283853] init: Not setting encryption policy on: /data/apex
+[   11.289902] init: Not setting encryption policy on: /data/app-staging
+[   11.291526] init: starting service 'apexd'...
+[   11.351214] init: Not setting encryption policy on: /data/preloads
+[   11.353123] init: Not setting encryption policy on: /data/vendor_ce
+[   11.353894] init: Not setting encryption policy on: /data/vendor_de
+[   11.357168] init: Not setting encryption policy on: /data/data
+[   11.369312] init: Not setting encryption policy on: /data/lost+found
+[   11.379249] init: Not setting encryption policy on: /data/system_de
+[   11.379998] init: Not setting encryption policy on: /data/system_ce
+[   11.380678] init: Not setting encryption policy on: /data/misc_de
+[   11.381333] init: Not setting encryption policy on: /data/misc_ce
+[   11.381985] init: Not setting encryption policy on: /data/user
+[   11.382619] init: Not setting encryption policy on: /data/user_de
+[   11.422686] init: Not setting encryption policy on: /data/media
+[   11.424376] init: starting service 'exec 11 (/system/bin/chattr +F /data/media)'...
+[   11.444302] init: starting service 'derive_sdk'...
+[   11.460807] init: starting service 'exec 12 (/system/bin/vdc --wait cryptfs init_user0)'...
+[   11.538154] init: starting service 'apexd-snapshotde'...
+[   11.624643] init: Command 'restorecon --recursive --skip-ce /data' action=post-fs-data (/system/etc/init/hw/init.rc:775) took 56ms and succeeded
+[   11.625501] init: starting service 'exec 13 (/system/bin/tzdatacheck /apex/com.android.tzdata/etc/tz /data/misc/zoneinfo)'...
+[   11.645471] init: processing action (post-fs-data) from (/vendor/etc/init/hw/init.mt6755.rc:139)
+[   11.702270] init: processing action (ro.crypto.type=block && post-fs-data) from (/vendor/etc/init/hw/init.ago.rc:6)
+[   11.702508] init: Top-level directory needs encryption action, eg mkdir /data/unencrypted <mode> <uid> <gid> encryption=Require
+[   11.728480] Adding 2457640k swap on /dev/block/zram0. Priority:-1 extents:1 across:2457640k SS
+[   11.738880] init: Not setting encryption policy on: /data/gsi
+[   11.751130] init: starting service 'exec 14 (/system/bin/otapreopt_slot)'...
+[   11.792767] selinux: SELinux: Could not stat /data/dalvik-cache/arm: No such file or directory.
+[   11.792835] selinux: SELinux: Could not stat /data/dalvik-cache/arm64: No such file or directory.
+[   11.792898] selinux: SELinux: Could not stat /data/dalvik-cache/mips: No such file or directory.
+[   11.792959] selinux: SELinux: Could not stat /data/dalvik-cache/mips64: No such file or directory.
+[   11.793018] selinux: SELinux: Could not stat /data/dalvik-cache/x86: No such file or directory.
+[   11.793077] selinux: SELinux: Could not stat /data/dalvik-cache/x86_64: No such file or directory.
+[   11.794013] init: starting service 'exec 15 (/system/bin/recovery-persist)'...
+[   11.797160] init: starting service 'tombstoned'...
+[   11.842784] init: processing action (load_persist_props_action) from (/system/etc/init/hw/init.rc:410)
+[   11.843282] init: starting service 'logd-reinit'...
+[   11.868816] init: processing action (load_bpf_programs) from (/system/etc/init/bpfloader.rc:20)
+[   11.870956] init: starting service 'bpfloader'...
+[   11.876876] init: processing action (persist.sys.fuse=true && zygote-start) from (/system/etc/init/hw/init.rc:802)
+[   11.879152] init: processing action (firmware_mounts_complete) from (/system/etc/init/hw/init.rc:416)
+[   11.879324] init: processing action (early-boot) from (/system/etc/init/installd.rc:5)
+[   11.920517] init: starting service 'exec 17 (/system/bin/phh-on-data.sh)'...
+[   11.991530] init: processing action (boot) from (/system/etc/init/hw/init.rc:841)
+[   12.001755] init: starting service 'hidl_memory'...
+[   12.013322] init: starting service 'vr_hwc'...
+[   12.022769] init: starting service 'vendor.audio-hal-2-0'...
+[   12.036939] init: starting service 'bluetooth-1-0'...
+[   12.054577] init: starting service 'vendor.cas-hal-1-1'...
+[   12.065947] init: starting service 'vendor.configstore-hal'...
+[   12.071343] init: starting service 'vendor.drm-hal-1-0'...
+[   12.075718] init: starting service 'vendor.drm-clearkey-hal-1-2'...
+[   12.080837] init: starting service 'vendor.drm-widevine-hal-1-2'...
+[   12.086274] init: starting service 'vendor.gatekeeper-1-0'...
+[   12.092323] init: starting service 'gnss_service'...
+[   12.098606] init: starting service 'vendor.gralloc-2-0'...
+[   12.104613] init: starting service 'vendor.hwcomposer-2-1'...
+[   12.111218] init: starting service 'health-hal-2-0'...
+[   12.116536] init: starting service 'light-hal-2-0'...
+[   12.125866] init: starting service 'vendor.memtrack-hal-1-0'...
+[   12.136055] init: starting service 'vendor.usb-hal-1-1'...
+[   12.141382] init: starting service 'vendor.vibrator-1-0'...
+[   12.146758] init: starting service 'vtservice_hidl'...
+[   12.155134] init: starting service 'lbs_hidl_service'...
+[   12.163636] init: starting service 'gpu-1-0'...
+[   12.170075] init: starting service 'mtk_hal_imsa'...
+[   12.186613] init: starting service 'power-hal-1-0'...
+[   12.201649] init: starting service 'nvram-hidl-1-1'...
+[   12.218549] init: starting service 'mtk_hal_wfo'...
+[   12.225678] init: Command 'class_start hal' action=boot (/system/etc/init/hw/init.rc:939) took 224ms and succeeded
+[   12.227008] init: starting service 'audioserver'...
+[   12.234453] init: starting service 'credstore'...
+[   12.240804] init: starting service 'gpu'...
+[   12.246404] init: starting service 'surfaceflinger'...
+[   12.260067] init: starting service 'fuelgauged'...
+[   12.319429] init: starting service 'mal-daemon'...
+[   12.331993] init: starting service 'wfca'...
+[   12.342857] init: starting service 'nvram_daemon'...
+[   12.352576] init: Command 'class_start core' action=boot (/system/etc/init/hw/init.rc:941) took 126ms and succeeded
+[   12.353570] init: starting service 'exec 18 (/system/bin/fsverity_init)'...
+[   12.379274] MTK_FG: SW fuel gauge version 150329
+[   12.379429] MTK_FG: GM 2.0[fgauge_version_check] FG Version => cmds:69 69 table size:300 300
+[   12.379519] MTK_FG: [fgauge_initialization] Done
+[   12.381714] MTK_FG: [fgauge_compensate_battery_voltage] origin volt: 4191, ocv volt: _4274
+[   12.385705] init: processing action (persist.sys.usb.config=* && boot) from (/system/etc/init/hw/init.usb.rc:105)
+[   12.386101] MTK_FG: [battery_update]soc:100 uisoc:100 uisoc2:-100 time:0 duraction:3 chr:1:0 batfull:0 shutdown_cond:0 lv:6
+[   12.386374] MTK_FG: [fg_tracking]battery_tracking_time:0 left:0 type:0
+[   12.386388] MTK_FG: [battery_update_final]soc:100 uisoc:100 uisoc2:100 bat1: 0 bat2: 0 time:0 duraction:3 chr:1:0 batfull:0 shutdown_cond:0
+[   12.386452] MTK_FG: [FGADC_D0](HW OCV 3676,42 SW OCV 4274,96 RTC 100, VBAT 4191,91, T_avg 25, I 4506, is_charging 0, is_charger 1, gap1 30,10,10,3,10,30 D0 0 ui_soc:100 7 embedded 0 plugout 0!)
+[   12.387015] init: processing action (boot) from (/vendor/etc/init/hw/init.mt6755.rc:511)
+[   12.434435] init: processing action (boot) from (/system/etc/init/dumpstate.rc:1)
+[   12.434690] init: processing action (boot) from (/system/etc/init/gsid.rc:20)
+[   12.435516] init: starting service 'exec 19 (/system/bin/gsid run-startup-tasks)'...
+[   12.438375] init: processing action (boot) from (/system/etc/init/lineage-iosched.rc:16)
+[   12.442891] selinux: SELinux: Could not get canonical path for /sys/block/sda/queue restorecon: No such file or directory.
+[   12.447433] init: processing action (boot) from (/vendor/etc/init/init.wmt_drv.rc:1)
+[   12.453412] [VcoreFS]disp_virtual(w:0, h:0) disp(w:720, h:1560)
+[   12.453784] [VcoreFS]gpu_set_init_opp(-1)
+[   12.480082] [WMT-DETECT][I]wmt_detect_driver_init:driver(major 154) installed success
+[   12.483662] init: processing action (enable_property_trigger) from (<Builtin Action>:0)
+[   12.484650] init: processing action (apexd.status=ready && ro.product.cpu.abilist32=*) from (/system/etc/init/hw/init.rc:94)
+[   12.490435] init: starting service 'boringssl_self_test_apex32'...
+[   12.548011] init: processing action (security.perf_harden=1 && sys.init.perf_lsm_hooks=) from (/system/etc/init/hw/init.rc:1018)
+[   12.550153] init: processing action (security.perf_harden=1) from (/system/etc/init/hw/init.rc:1028)
+[   12.553479] init: processing action (ro.debuggable=1) from (/system/etc/init/hw/init.rc:1055)
+[   12.553774] init: processing action (sys.usb.config=adb && sys.usb.configfs=0) from (/system/etc/init/hw/init.usb.rc:37)
+[   12.557578] [USB]functions_store: name = adb
+[   12.558718] [USB]enable function 'ffs'/ffffffc00115c520
+[   12.560402] init: starting service 'adbd'...
+[   12.567429] init: processing action (sys.usb.config=adb && vendor.usb.acm_cnt=0) from (/vendor/etc/init/hw/init.mt6755.usb.rc:53)
+[   12.569626] [USB]disable function 'ffs'/ffffffc00115c520
+[   12.575312] init: processing action (persist.vendor.radio.port_index=) from (/vendor/etc/init/hw/init.mt6755.usb.rc:717)
+[   12.577726] init: processing action (sys.usb.config=*) from (/vendor/etc/init/hw/init.mt6755.usb.rc:827)
+[   12.579323] init: processing action (init.svc.audioserver=running) from (/system/etc/init/audioserver.rc:35)
+[   12.579595] init: processing action (persist.heapprofd.enable= && traced.lazy.heapprofd=) from (/system/etc/init/heapprofd.rc:34)
+[   12.581034] init: processing action (ro.iorapd.enable=false) from (/system/etc/init/iorapd.rc:25)
+[   12.582080] init: processing action (debug.atrace.user_initiated= && persist.traced.enable=1) from (/system/etc/init/perfetto.rc:47)
+[   12.583414] init: starting service 'traced_probes'...
+[   12.587291] init: processing action (persist.traced.enable=1) from (/system/etc/init/perfetto.rc:50)
+[   12.589884] init: starting service 'traced'...
+[   12.596713] init: processing action (persist.traced_perf.enable= && sys.init.perf_lsm_hooks=) from (/system/etc/init/traced_perf.rc:39)
+[   12.597422] init: processing action (persist.sys.phh.mainkeys=*) from (/system/etc/init/vndk.rc:23)
+[   12.597859] init: processing action (ro.sf.lcd_density=*) from (/system/etc/init/vndk.rc:50)
+[   12.605564] init: starting service 'zygote'...
+[   12.616272] init: processing action (defaultcrypto) from (/system/etc/init/vdc.rc:2)
+[   12.653867] init: processing action (vold.decrypt=trigger_restart_min_framework) from (/system/etc/init/hw/init.rc:969)
+[   12.655029] init: starting service 'update_verifier'...
+[   12.680599] [USB]bind_config function 'ffs'/ffffffc00115c520
+[   12.689889] init: Could not start service 'msensord' as part of class 'main': Cannot find '/vendor/bin/msensord': No such file or directory
+[   12.690863] init: starting service 'zygote_secondary'...
+[   12.699061] init: starting service 'adb_root'...
+[   12.705540] init: starting service 'cameraserver'...
+[   12.712884] init: starting service 'drm'...
+[   12.718575] init: starting service 'idmap2d'...
+[   12.725281] init: starting service 'incidentd'...
+[   12.731385] init: starting service 'installd'...
+[   12.735739] init: starting service 'keystore'...
+[   12.740832] init: starting service 'mediaextractor'...
+[   12.749501] init: starting service 'mediametrics'...
+[   12.755693] init: starting service 'media'...
+[   12.762156] init: starting service 'netd'...
+[   12.770639] init: starting service 'phhoplus-alert-slider'...
+[   12.774584] [WMT-DETECT][I]wmt_detect_open:open major 154 minor 0 (pid 646)
+[   12.775865] init: starting service 'storaged'...
+[   12.776307] init: Opened file '/d/mmc0/mmc0:0001/ext_csd', flags 0
+[   12.776370] [WMT-DETECT][I]wmt_detect_unlocked_ioctl:chipid(26453)
+[   12.776375] set current consys chipid (0x6755)
+[   12.776507] [WMT-DETECT][I]wmt_detect_unlocked_ioctl:kernel object mode
+[   12.776982] [STPDbg]stp_dbg_core_dump_init: create coredump object OK!
+[   12.777001] [HIF-SDIO][I]WMT_init:driver(major 190) installed
+[   12.781031] init: starting service 'sudaemon'...
+[   12.786755] init: starting service 'wificond'...
+[   12.793067] init: starting service 'mediacodec'...
+[   12.798122] init: starting service 'vendor.sensors-hal-2-0'...
+[   12.804256] init: starting service 'camerahalserver'...
+[   12.826933] init: starting service 'ipsec_mon'...
+[   12.833055] init: starting service 'PPLAgent'...
+[   12.839383] init: starting service 'pq-2-2'...
+[   12.846319] init: starting service 'wlan_assistant'...
+[   12.917600] init: starting service 'media.swcodec'...
+[   12.964194] android_usb gadget: [COM]USB_REQ_SET_CONFIGURATION: value=0
+[   12.975635] init: starting service 'statsd'...
+[   12.983092] init: Command 'class_start main' action=vold.decrypt=trigger_restart_min_framework (/system/etc/init/hw/init.rc:972) took 292ms and succeeded
+[   13.001797] init: processing action (init.svc.media=*) from (/system/etc/init/mediaserver.rc:1)
+[   13.014507] [HIF-SDIO][I]wmt_lib_init:set pwr on seq par to hw conf
+[   13.014538] [HIF-SDIO][I]wmt_lib_init:ldo(0)rst(0)on(0)off(0)rtc(0)
+[   13.014593] [WMT-CONSYS-HW][I]consys_co_clock_type:pmic_register_val = 0xc7c0, co_clock_type = 1,co-TSX mode
+[   13.014616] [I]wmt_export_platform_bridge_register:
+[   13.023027] [WMT-CONSYS-HW][I]consys_emi_mpu_set_region_protection:setting MPU for EMI share memory
+[   13.023057] [WMT-CONSYS-HW][I]consys_emi_set_remapping_reg:CONSYS_EMI_MAPPING dump in restore cb(0x000019fe)
+[   13.023237] [WMT-CONSYS-HW][I]consys_emi_coredump_remapping:COREDUMP EMI mapping OK virtual(0xffffff80062e0000) physical(0x9fe80000)
+[   13.024692] [WMT-CONSYS-HW][I]mtk_wmt_probe:GPS LNA gpio pin number:114, pinmux:0x00007200.
+[   13.024714] [WMT-CONSYS-HW][I]mtk_wmt_probe:ant swap pin number:-2
+[   13.026186] [HIF-SDIO][I]wmtd_thread:wmtd thread starts
+[   13.040627] ueventd: firmware: loading 'WMT_STEP.cfg' for '/devices/virtual/firmware/WMT_STEP.cfg'
+[   13.041939] SELinux: Context u:object_r:firmware_file:s0 is not valid (left unmapped).
+[   13.218729] ueventd: firmware: could not find firmware for WMT_STEP.cfg
+[   13.219156] ueventd: loading /devices/virtual/firmware/WMT_STEP.cfg took 178ms
+[   13.221608] [WMT-DFT][I]wmt_step_read_file:STEP read file, WMT_STEP.cfg is not exist
+[   13.222055] [WMT-DETECT][I]wmt_detect_close:close major 154 minor 0 (pid 646)
+[   13.231425] init: processing action (vendor.connsys.driver.ready=yes) from (/vendor/etc/init/init.bt_drv.rc:2)
+[   13.273419] init: Service 'wmt_loader' (pid 646) exited with status 0 oneshot service took 2.034000 seconds in background
+[   13.313527] mtk_stp_GPS_chrdev driver(major 191) installed.
+[   13.327280] [MTK-WIFI] WIFI_init[I]: mtk_wmt_wifi_chrdev driver(major 153) installed
+[   13.357521] [wlan]initWlan:(INIT INFO) initWlan
+[   13.368530] SNDRV_PCM_STREAM_PLAYBACK mtkalsa_dl1playback_constraints
+[   13.368683] [HIF-SDIO][I]WMT_open:major 190 minor 0 (pid 647)
+[   13.368689] [HIF-SDIO][I]WMT_open:1st call
+[   13.368915] [HIF-SDIO][I]WMT_unlocked_ioctl:luncher set STP mode success!
+[   13.368926] [STP] mtk_wcn_stp_set_wmt_last_close:[I] set wmt_last_close flag (0)
+[   13.369174] [wlan]createWirelessDevice:(INIT INFO) Create wireless device success
+[   13.369430] [WMT-CORE][E]opfunc_hif_conf(1134):WMT-CORE: WMT HIF info added
+[   13.370128] [wlan]HifAhbPltmProbe:(INIT INFO) HifAhbPltmProbe
+[   13.370142] [wlan]HifAhbPltmProbe:(INIT INFO) mtk_wcn_wmt_wlan_reg
+[   13.370150] [HIF-SDIO][I]mtk_wcn_wmt_wlan_reg:wmt wlan cb register
+[   13.374981] <ACCELEROMETER> acc_store_cali 471 : ACC DRIVER OLD ARCHITECTURE DON'T SUPPORT ACC COMMON VERSION FLUSH
+[   13.379714] [HIF-SDIO][I]mtk_wcn_wmt_func_ctrl:wmt-exp: OPID(3) type(9) start
+[   13.379810] [WMT-CONSYS-HW][I]mtk_wcn_consys_hw_pwr_on:CONSYS-HW-PWR-ON, start
+[   13.379828] [WMT-CONSYS-HW][I]mtk_wcn_consys_hw_reg_ctrl:CONSYS-HW-REG-CTRL(0x00000001),start
+[   13.379835] [WMT-CONSYS-HW][I]consys_reset_emi_coredump:Reset EMI(0xF0080000 ~ 0xF0080400) and (0xF0088400 ~ 0xF0090400)
+[   13.379917] vcn18: operation not allowed
+[   13.380492] [WMT-CONSYS-HW][I]mtk_wcn_consys_hw_reg_ctrl:co clock type(3),turn on clk buf
+[   13.380936] [WMT-CONSYS-HW][I]mtk_wcn_consys_hw_efuse_paldo_ctrl:turn on vcn28 for efuse usage in co-clock mode
+[   13.383769] mtk_voice_close with SNDRV_PCM_STREAM_CAPTURE
+[   13.390383] mtk_uldlloopbackpcm_close with SNDRV_PCM_STREAM_CAPTURE
+[   13.391362] SNDRV_PCM_STREAM_PLAYBACK mtkalsa_mrgrx_playback_constraints
+[   13.394338] SNDRV_PCM_STREAM_CAPTURE
+[   13.396008] SNDRV_PCM_STREAM_PLAYBACK mtkalsa_voice_bt_constraints
+[   13.398247] SNDRV_PCM_STREAM_PLAYBACK mtkalsa_fmtx_playback_constraints
+[   13.398727] SNDRV_PCM_STREAM_CAPTURE mtkalsa_capture_constraints
+[   13.401016] mtk_voice_md2_close with SNDRV_PCM_STREAM_CAPTURE
+[   13.401487] SNDRV_PCM_STREAM_PLAYBACK mtkalsa_playback_constraints
+[   13.401964] SNDRV_PCM_STREAM_PLAYBACK mtkalsa_voice_md2_bt_constraints
+[   13.402258] SNDRV_PCM_STREAM_PLAYBACK mtkalsa_fm_i2s_playback_constraints
+[   13.406222] [WMT-CONSYS-HW][I]polling_consys_chipid:retry(8)consys chipId(0x00000326)
+[   13.436483] [WMT-PLAT][W]wmt_plat_soc_gps_sync_ctrl:host gps sync pin not defined!!!
+[   13.436515] [WMT-PLAT][W]wmt_plat_soc_i2s_ctrl:host i2s pin not defined!!!
+[   13.436578] [WMT-CONSYS-HW][I]consys_read_irq_info_from_dts:get irq id(269) and irq trigger flag(8) from DT
+[   13.437573] [WMT-CORE][I]wmt_core_hw_check:get hwcode (chip id) (0x326)
+[   13.439387] [WMT-IC][W]mtk_wcn_soc_ver_check:0x326: ic info: SOC_CONSYS.E1 (0x8a00/0x8a00, HWVER:0x8a00, patch_ext:_e1)
+[   13.460657] [HIF-SDIO][I]wmt_lib_get_icinfo:chip_id=[6755]
+[   13.487239] [WMT-IC][I]mtk_wcn_soc_normal_patch_dwn:normal patch download patch size(318380) fragNum(319)
+[   13.545206] kdCISModulePowerOn -on:currSensorName=imx135_mipi_raw pinSetIdx=0
+[   13.694276] kdCISModulePowerOn -off:currSensorName=imx135_mipi_raw pinSetIdx=0
+[   13.870914] [WMT-IC][W]mtk_wcn_soc_normal_patch_dwn:wmt_core: patch dwn:0 frag(319, 380) ok
+[   13.962495] imx145 i2c write id: 0x20, sensor id: 0x145
+[   14.083116] 11111 kdCISModulePowerOn -on:currSensorName=sp2508_mipi_raw pinSetIdx=0
+[   14.093178] SP2508_camera_sensor[feature_control] feature_id = 3041
+[   14.096859] SP2508_camera_sensor[get_info] scenario_id = 0
+[   14.096930] 11111 kdCISModulePowerOn -on:currSensorName=ov5670_mipi_raw pinSetIdx=0
+[   14.101433] [WMT-IC][I]mtk_wcn_soc_sw_init:bt_tssi_from_wifi=0, bt_tssi_target=0
+[   14.101445] [WMT-IC][I]wmt_stp_init_epa:epa_mode:0x0
+[   14.101454] [WMT-IC][I]wmt_stp_init_epa_elna_invert_cr:ctrl GET_WMT_CONF ok(0xffffffbffc0cc4e8)
+[   14.101462] [WMT-IC][I]wmt_stp_init_wifi_ant_swap:ant swap mode = 0, main_polarity = 0, ant_sel = 0
+[   14.101877] vcn33_wifi: unsupportable voltage range: 3300000-3300uV
+[   14.102259] [WMT-IC][I]mtk_wcn_soc_calibration:mtk_wcn_soc_do_calibration start
+[   14.102267] [WMT-IC][I]mtk_wcn_soc_do_calibration:Skip restore, chip id=326 mtk_wcn_stp_assert_flow_get()=0
+[   14.102272] [WMT-IC][I]mtk_wcn_soc_do_calibration:Calibration start
+[   14.106947] get_imgsensor_id 1190
+[   14.107900] <<OV5670_camera_sensor>>[get_info:1487] scenario_id = 0
+[   14.107971] 11111 kdCISModulePowerOn -on:currSensorName=gc2355_mipi_raw pinSetIdx=0
+[   14.118619] kdCISModulePowerOn -on:currSensorName=gc5025main_mipi_raw pinSetIdx=0
+[   14.140733] gc5025main------------------i2c write id: 0x6e, sensor id: 0x1
+[   14.140935] kdCISModulePowerOn -off:currSensorName=gc5025main_mipi_raw pinSetIdx=0
+[   14.144723] [PBM] AP2MD1 section level, 2G: 0x11befbf(0x11befbf), 3G: 0xd84a75(0xd84a75), 4G: 0xd84a75(0xd84a75), TDD: 0xd84a75(0xd84a75), addr: 0xffffff8001f69fd0
+[   14.144728] [PBM] MD section level init, MD1: 1, MD3: 0
+[   14.161566] gc5025_camera_sensor[feature_control] feature_id = 3041
+[   14.162495] gc5025_camera_sensor[get_info] scenario_id = 0
+[   14.313683] >>>> imx278 sensor id: 0x0
+[   14.426600] [WMT-IC][I]mtk_wcn_soc_do_calibration:Calibration end
+[   14.426681] [WMT-CONSYS-HW][I]mtk_wcn_consys_hw_efuse_paldo_ctrl:turn off vcn28 for efuse usage in co-clock mode
+[   14.426689] [WMT-IC][I]wmt_stp_init_coex:ctrl GET_WMT_CONF ok(0xffffffbffc0cc4e8)
+[   14.429767] [WMT-IC][W]mtk_wcn_soc_sw_init:co-clock disabled.
+[   14.430110] [WMT-CORE][I]wmt_core_dump_func_state:[AF FUNC ON]status(b:0 f:0 g:0 w:0 lpbk:2 coredump:0 wmt:2 ant:0 sd1:0 sd2:0 stp:0)
+[   14.430186] [HIF-SDIO][I]mtk_wcn_wmt_func_ctrl:OPID(3) type(9) ok
+[   14.474804] kdCISModulePowerOn -on:currSensorName=imx190main_mipi_raw pinSetIdx=0
+[   14.584347] init: starting service 'vendor.gsm0710muxd'...
+[   14.630442] kdCISModulePowerOn -off:currSensorName=imx190main_mipi_raw pinSetIdx=0
+[   14.751139] 11111 kdCISModulePowerOn -on:currSensorName=imx135_mipi_raw pinSetIdx=1
+[   14.774728] kdCISModulePowerOn -on:currSensorName=sp2508_mipi_raw pinSetIdx=1
+[   28.849000] am_wtf: [0,1158,system_server,-1,SystemServer,Could not resolve the networking module]
+[   29.321000] am_proc_start: [0,1611,1000,com.android.settings:CryptKeeper,top-activity,{com.android.settings/com.android.settings.CryptKeeper}]
