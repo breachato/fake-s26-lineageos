@@ -5,7 +5,9 @@ It has:
 
 - a boot animation built from the phone's **real** boot log;
 - the GPS disabled in hardware;
-- a system-level fake location.
+- a system-level fake location;
+- every connection through WireGuard, with a new Wi-Fi MAC and a different server each time;
+- Google services, the cellular modem and system notifications switched off.
 
 > These scripts write straight to the phone's partitions (`logo`, `vendor`, `cache`).
 > They are made for **this** hardware. On any other device they can leave it unbootable.
@@ -44,12 +46,36 @@ rather than from Android's spoofed properties:
 - **System fake location.** A persistent system app in `/vendor/app` replaces the `gps`,
   `network` and `fused` providers with a fixed position in Reykjavík. Apps that need a location
   still work, and the chip is never turned on.
-- **Charging feedback.** A persistent system app (`/vendor/app/ChargeAnim`) does two things:
+- **Battery and charging.** A persistent system app (`/vendor/app/ChargeAnim`), signed with the
+  platform key, does two things:
+  - It draws the status-bar battery in place of SystemUI's: a horizontal battery with the
+    percentage inside, and a bolt next to it while charging.
+    - The icons are set through `IStatusBarService.setIcon` in two slots added at the end of
+      `config_statusBarIcons`.
+    - SystemUI's own battery is hidden through `icon_blacklist`.
   - When a charger is plugged in while the phone is locked, it shows a full-screen animation:
     a big battery that fills green up to the real level, with a bolt and the percentage counting
     up. It never shows on top of an app in use.
-  - While plugged in, it shows a bolt icon in the status bar, because the battery is shown as
-    plain percentage text only.
+- **Tunnel.** Every connection goes through WireGuard, and nothing leaves outside it.
+  - The official WireGuard app is always-on with lockdown and holds 8 server configurations.
+  - A root daemon (`breachato-tunneld`, started by init) handles each connection:
+    - It sets a new random Wi-Fi MAC when Wi-Fi turns on and after every disconnection, so each
+      connection gets a different MAC and DHCP address.
+    - It brings up a different server on every connection, so the public IP changes too.
+  - The **Tunnel** app shows network, MAC, IP and server, and connects to Wi-Fi networks. It also
+    has *New identity*, *Change server* and *Check public IP*.
+- **App lock.** F-Droid, Chrome and Files ask for a PIN every time they are opened.
+  - An accessibility service puts a dark keypad on top of the protected app.
+  - The PIN is stored only as a salted SHA-256 hash.
+  - Five wrong attempts lock entry for 30 seconds.
+- **Tracking off.**
+  - Google Play Services, GSF and the other Google background packages are disabled.
+  - Airplane mode keeps the cellular modem off while Wi-Fi stays on. Emergency calls still turn
+    the radio back on.
+  - Bluetooth, Wi-Fi/BLE background scanning, captive-portal probes and LineageOS stats are off.
+  - Notifications from the system packages are blocked, including the ones Settings won't let you
+    block (`android/notifctl`).
+  - The emergency-alert receiver is disabled.
 - **Navigation.** Gesture navigation, with the back gesture on the left edge only.
 - **All audio through the earpiece.** This unit's loudspeaker is dead: there is no external
   amplifier on the I²C bus and every speaker path is silent. Every "speaker" path now drives the
@@ -58,9 +84,11 @@ rather than from Android's spoofed properties:
 ## Layout
 
 ```
-tools/      PC-side Python: boot logo, boot animation, log filtering, sparse conversion
+tools/      PC-side Python: boot logo, boot animation, status-bar battery icons, log filtering,
+            sparse conversion
 bootanim/   real boot logs of the two boot phases, already filtered
-android/    sources of the rounded-corner overlay, the fake-location app and the charging app, plus build.ps1
+android/    overlay, fake-location app, charge/battery app, app lock, Tunnel app and its root
+            daemon (tunnel/breachato-tunneld.sh), notification tool (notifctl), plus build.ps1
 device/     scripts run on the phone as root (phh-su)
 device/vendor/zz_oem_bootanim.rc   final init script installed in /vendor/etc/init
 ```
@@ -94,20 +122,37 @@ device/vendor/zz_oem_bootanim.rc   final init script installed in /vendor/etc/in
      - `media/` holds the pre-PIN animation.
      - `media2/` holds the post-PIN one.
    - At `vold.decrypt=trigger_post_fs_data`, the init script bind-mounts `media2` over `media`.
-6. **Privacy, corners and charging.**
-   - `android/build.ps1` builds the overlay and both apps. It needs Build-Tools 30.0.3 and the
+6. **Apps.**
+   - `android/build.ps1` builds the overlay and the apps. It needs Build-Tools 30.0.3 and the
      API 30 `android.jar`; the SDK path is set at the top of the script.
      - The apps are compiled with `dx`, without desugaring, so the Java sources avoid lambdas.
-   - Then run `device/privacy_corners.sh`, `device/gps_lock.sh`, `device/fakeloc_system.sh`
-     and `device/chargeanim_system.sh`.
+   - The charge app and Tunnel are signed with the **platform key**. This GSI's system is signed
+     with AOSP's public test key (`build/target/product/security/platform.*`), which grants them
+     `STATUS_BAR` and `NETWORK_SETTINGS`.
+     - Put `platform.pk8` and `platform.x509.pem` in the SDK folder's `platformkey/`; they are not
+       committed.
+     - A system signed with public test keys means any app can be signed as "system".
+   - Install with `device/privacy_corners.sh`, `device/gps_lock.sh`,
+     `device/fakeloc_system.sh` and `device/chargeanim_system.sh`.
    - After the reboot, run `appops set it.breachato.fakeloc android:mock_location allow`.
-7. **Status bar and gestures** (as root):
-   - Battery as percentage text:
-     `content insert --uri content://lineagesettings/system --bind name:s:status_bar_battery_style --bind value:s:2`
+   - If a re-signed system app keeps old permissions, delete `/data/system/package_cache/*` and
+     reboot.
+7. **Tunnel and privacy** (as root):
+   - `device/harden.sh` disables the Google packages, enables airplane mode with Wi-Fi on and
+     turns off the probes and scans.
+   - `device/notif_block.sh` blocks system notifications through `android/notifctl`.
+   - `device/cb_off.sh` and `device/cb_disable.sh` switch off emergency alerts.
+   - Install WireGuard from [download.wireguard.com](https://download.wireguard.com/android-client/).
+   - `device/wg_import.sh` imports the `.conf` files into its data folder, together with a
+     DataStore file that turns on remote control, restore on boot and the first tunnel.
+   - `device/install_tunnel.sh` sets always-on VPN with lockdown and installs Tunnel and App lock
+     as system apps. It also installs the daemon and its init service
+     (`seclabel u:r:phhsu_daemon:s0`), and enables the lock's accessibility service.
+8. **Status bar and gestures** (as root):
    - Gesture navigation:
      `cmd overlay enable-exclusive --category com.android.internal.systemui.navbar.gestural`
    - No back gesture on the right edge: `settings put secure back_gesture_inset_scale_right 0`
-8. **Audio.** Run `device/earpiece_all.sh`. To undo it, run `device/spk_revert.sh`.
+9. **Audio.** Run `device/earpiece_all.sh`. To undo it, run `device/spk_revert.sh`.
 
 **Writing to `/vendor`:**
 - Remount it read-write first: `mount -o remount,rw /vendor`.
@@ -128,6 +173,12 @@ about 2 GB. Keep your own copy somewhere safe. To go back to stock, run
 - **No finger scrolling in the boot animation.** It runs before touch input exists.
 - **Loudspeaker.** Broken in hardware on this unit.
 - **Mock flag.** The fake location is marked as *mock*, so apps that check for it can tell.
+- **Wi-Fi MAC.** The MediaTek driver reads its NVRAM MAC only at boot, and Android switches Wi-Fi
+  off if `wlan0` is taken down. So the daemon changes the MAC live, with `ip link set address`,
+  while the interface is not associated. Android never resets it, because
+  `config_wifi_connected_mac_randomization_supported` is false on this build.
+- **No internet without the tunnel.** With lockdown on, nothing works until Wi-Fi is connected and
+  a WireGuard server is up.
 - **Left as they are:** the bootloader's ORANGE state and the emergency-call button.
 
 ## License

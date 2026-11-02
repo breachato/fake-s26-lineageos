@@ -7,6 +7,11 @@
 *.idsig
 *.jks
 *.keystore
+*.pk8
+*.x509.pem
+platformkey/
+# WireGuard configs hold private keys
+*.conf
 final_*/
 preview_*/
 __pycache__/

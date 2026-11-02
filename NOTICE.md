@@ -13,6 +13,9 @@ device that contains them.
 | Android SDK Build-Tools 30.0.3 (`aapt2`, `dx`, `zipalign`, `apksigner`) and Platform-Tools (`adb`, `fastboot`, `mke2fs`) | Build the APKs; talk to and flash the device | Android Software Development Kit License Agreement |
 | Google USB Driver (`android_winusb.inf`) | Windows driver for fastboot | Android SDK License Agreement |
 | MediaTek MT6755 vendor firmware (`vendor`, `lk`, `logo`, `boot`, ...) | Stock firmware on the device; partly modified on the device by the scripts | Proprietary, MediaTek and the device manufacturer |
+| [WireGuard for Android](https://www.wireguard.com/) | Tunnel engine driven by the Tunnel app and daemon | Apache 2.0 |
+| AOSP platform test key (`build/target/product/security/platform.*`) | Signs the apps that need system permissions; public, not committed | Apache 2.0 |
+| Roboto Bold (from the device's `/system/fonts`) | Rendered into the status-bar battery digits (`android/chargeanim/res`) | Apache 2.0 |
 | [Pillow](https://python-pillow.org/) | Image rendering in `tools/` | MIT-CMU (HPND) |
 | Python | Runs `tools/` | PSF License |
 | Consolas font (`consola.ttf`) | Boot-log font, read from the local Windows install, not redistributed | Microsoft font license |

@@ -3,4 +3,44 @@
     <dimen name="rounded_corner_radius">24dp</dimen>
     <dimen name="rounded_corner_radius_adjustment">0px</dimen>
     <bool name="config_supportsRoundedCornersOnWindows">true</bool>
+
+    <!-- stock slot order, plus the charge app's bolt and battery at the far right
+         (SystemUI's own battery view is hidden through icon_blacklist) -->
+    <string-array name="config_statusBarIcons">
+        <item>alarm_clock</item>
+        <item>rotate</item>
+        <item>headset</item>
+        <item>data_saver</item>
+        <item>ime</item>
+        <item>sync_failing</item>
+        <item>sync_active</item>
+        <item>nfc</item>
+        <item>tty</item>
+        <item>speakerphone</item>
+        <item>cdma_eri</item>
+        <item>data_connection</item>
+        <item>phone_evdo_signal</item>
+        <item>phone_signal</item>
+        <item>secure</item>
+        <item>managed_profile</item>
+        <item>cast</item>
+        <item>screen_record</item>
+        <item>vpn</item>
+        <item>bluetooth</item>
+        <item>camera</item>
+        <item>microphone</item>
+        <item>location</item>
+        <item>mute</item>
+        <item>volume</item>
+        <item>zen</item>
+        <item>ethernet</item>
+        <item>wifi</item>
+        <item>hotspot</item>
+        <item>mobile</item>
+        <item>airplane</item>
+        <item>battery</item>
+        <item>sensors_off</item>
+        <item>breachato_charging</item>
+        <item>breachato_battery</item>
+    </string-array>
 </resources>
